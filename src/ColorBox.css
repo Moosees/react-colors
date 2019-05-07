@@ -1,8 +1,54 @@
 .ColorBox {
-  cursor: pointer;
   display: inline-block;
-  height: 25%;
-  margin: 0 auto;
   position: relative;
+  height: 25%;
   width: 20%;
+  margin: 0 auto;
+  letter-spacing: 2px;
+  line-height: normal;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.ColorBox-content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: .8rem;
+  color: #000;
+}
+
+.ColorBox-btn {
+  position: absolute;
+  text-align: center;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  line-height: 3rem;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.ColorBox-btn-more {
+  right: 0;
+  bottom: 0;
+  height: 3rem;
+  width: 6rem;
+}
+
+.ColorBox-btn-copy {
+  top: 50%;
+  left: 50%;
+  height: 3rem;
+  width: 10rem;
+  margin-top: -1.5rem;
+  margin-left: -5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+
+.ColorBox:hover .ColorBox-btn-copy {
+  opacity: 1;
 }
