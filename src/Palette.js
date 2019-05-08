@@ -4,7 +4,7 @@ import './Palette.css';
 
 const Palette = ({ palette }) => {
   const colorBoxes = palette.colors.map(color => (
-    <ColorBox background={color.color} name={color.name} />
+    <ColorBox bgColor={color.color} name={color.name} />
   ));
 
   return (
