@@ -2,6 +2,39 @@
   height: 100vh;
 }
 
+.Palette-slider {
+  display: inline-block;
+  width: 34rem;
+  margin: 0 1rem;
+  padding: 1rem;
+}
+
+.Palette-slider .rc-slider-track {
+  background-color: transparent;
+}
+
+.Palette-slider .rc-slider-rail {
+  height: 8px;
+  background: linear-gradient(90deg, #eee, #333);
+}
+
+.Palette-slider .rc-slider-handle {
+  height: 15px;
+  width: 15px;
+  margin-top: -4px;
+  margin-left: -3px;
+  outline: none;
+  box-shadow: none;
+  background-color: #00bcd4;
+  border: 2px solid #00bcd4;
+  transition: transform 0.1s ease-in-out;
+}
+
+.Palette-slider .rc-slider-handle:hover,
+.Palette-slider .rc-slider-handle:active {
+  transform: scale(1.2);
+}
+
 .Palette-colors {
   height: 90%;
   line-height: 0;
