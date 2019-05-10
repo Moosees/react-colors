@@ -1,15 +1,35 @@
 import chroma from 'chroma-js';
-const levels = [900, 800, 700, 600, 500, 400, 300, 200, 100, 50];
+const levels = [
+  950,
+  900,
+  850,
+  800,
+  750,
+  700,
+  650,
+  600,
+  550,
+  500,
+  450,
+  400,
+  350,
+  300,
+  250,
+  200,
+  150,
+  100,
+  50
+];
 
 const getRange = hexColor => {
   return [
     chroma(hexColor)
-      .darken(1.4) // almost black
+      .darken(2) // almost black
       .hex(),
     hexColor, // normal color
     chroma(hexColor)
-      .brighten(2)
-      .hex()
+      .brighten(3.5)
+      .hex() // almost white
   ];
 };
 
