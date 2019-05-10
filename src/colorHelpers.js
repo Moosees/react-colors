@@ -24,11 +24,11 @@ const levels = [
 const getRange = hexColor => {
   return [
     chroma(hexColor)
-      .darken(2) // almost black
+      .darken(2.5) // almost black
       .hex(),
     hexColor, // normal color
     chroma(hexColor)
-      .brighten(3.5)
+      .brighten(3.4)
       .hex() // almost white
   ];
 };
