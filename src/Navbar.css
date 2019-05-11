@@ -21,19 +21,18 @@
   color: #000;
 }
 
-.Navbar-slider-box {
+.Navbar-slider-container {
   display: flex;
-  padding: 1rem;
 }
 
-.Navbar-slider-box span {
+.Navbar-slider-container span {
   font-size: 1.2rem;
 }
 
 .Navbar-slider {
   display: inline-block;
   width: 34rem;
-  margin: 0 1rem;
+  margin: 0 1.5rem;
 }
 
 .Navbar-slider .rc-slider-track {
@@ -60,4 +59,9 @@
 .Navbar-slider .rc-slider-handle:hover,
 .Navbar-slider .rc-slider-handle:active {
   transform: scale(1.2);
+}
+
+.Navbar-format-select {
+  margin-left: auto;
+  margin-right: 1rem;
 }
