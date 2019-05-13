@@ -56,6 +56,7 @@ const generatePalette = sourcePalette => {
       newPalette.colors[levels[i]].push({
         name: `${color.name} ${levels[i]}`,
         id: `${color.name.toLowerCase().replace(/ /g, '-')}-${levels[i]}`,
+        shortId: color.name.toLowerCase().replace(/ /g, '-'),
         hex: scale[i],
         rgb: chroma(scale[i]).css(),
         rgba: chroma(scale[i])
