@@ -1,13 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
 
 const styles = {
   root: {
-    maxWidth: '25rem',
     backgroundColor: '#fff',
     borderRadius: '5px',
-    padding: '1rem',
+    padding: '0.5rem 0.5rem 0',
     position: 'relative',
     overflow: 'hidden',
     '&:hover': {
@@ -17,40 +15,45 @@ const styles = {
   colors: {
     display: 'flex',
     flexWrap: 'wrap',
+    height: '15rem',
+    width: '100%',
+    backgroundColor: '#f9f9f9',
+    borderRadius: '5px',
+    overflow: 'hidden',
     '& span': {
-      width: '3rem',
-      height: '3rem'
+      width: '20%',
+      height: '25%'
     }
   },
   title: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: '0',
     color: '#000',
-    paddingTop: '1rem',
-    fontSize: '1.4rem'
+    padding: '0.3rem',
+    fontSize: '1.3rem'
   },
   emoji: {
-    fontSize: '2.5rem'
+    fontSize: '1.8rem'
   }
 };
 
-const MiniPalette = ({ classes, paletteName, emoji, id, colors }) => {
+const MiniPalette = ({ classes, paletteName, emoji, colors, handleClick }) => {
   return (
-    <Link to={`/palette/${id}`}>
-      <div className={classes.root}>
-        <div className={classes.colors}>
-          {colors.map(color => (
-            <span style={{ backgroundColor: color.color }} />
-          ))}
-        </div>
-        <h5 className={classes.title}>
-          {paletteName}
-          <span className={classes.emoji}>{emoji}</span>
-        </h5>
+    <div className={classes.root} onClick={handleClick}>
+      <div className={classes.colors}>
+        {colors.map(color => (
+          <span
+            key={`${color.name}${color.color}`}
+            style={{ backgroundColor: color.color }}
+          />
+        ))}
       </div>
-    </Link>
+      <h5 className={classes.title}>
+        {paletteName}
+        <span className={classes.emoji}>{emoji}</span>
+      </h5>
+    </div>
   );
 };
 
