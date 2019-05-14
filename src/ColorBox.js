@@ -36,9 +36,11 @@ class ColorBox extends Component {
               <span>{name}</span>
             </div>
             <button className="ColorBox-btn ColorBox-btn-copy">Copy</button>
-            <Link to={moreUrl} onClick={e => e.stopPropagation()}>
-              <button className="ColorBox-btn ColorBox-btn-more">More</button>
-            </Link>
+            {moreUrl && (
+              <Link to={moreUrl} onClick={e => e.stopPropagation()}>
+                <button className="ColorBox-btn ColorBox-btn-more">More</button>
+              </Link>
+            )}
           </div>
         </div>
       </CopyToClipboard>
