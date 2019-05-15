@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { withStyles } from '@material-ui/styles';
 import chroma from 'chroma-js';
 
-const styles = {
+export default {
   root: {
     cursor: 'pointer',
     position: 'relative',
@@ -21,7 +17,8 @@ const styles = {
     bottom: 0,
     width: '100%',
     padding: '0.8rem',
-    color: ({ bgColor }) => chroma(bgColor).luminance() <= 0.08 ? '#e9e9e9' : '#111'
+    color: ({ bgColor }) =>
+      chroma(bgColor).luminance() <= 0.08 ? '#e9e9e9' : '#111'
   },
   btn: {
     position: 'absolute',
@@ -96,7 +93,10 @@ const styles = {
       textAlign: 'center',
       textShadow: '1px 2px #000',
       textTransform: 'uppercase',
-      backgroundColor: ({bgColor}) => chroma(bgColor).luminance() >= 0.85 ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)',
+      backgroundColor: ({ bgColor }) =>
+        chroma(bgColor).luminance() >= 0.85
+          ? 'rgba(0, 0, 0, 0.2)'
+          : 'rgba(255, 255, 255, 0.2)',
       transitionDelay: 0
     },
     '& p': {
@@ -111,52 +111,3 @@ const styles = {
     zIndex: 100
   }
 };
-
-class ColorBox extends Component {
-  state = { copied: false };
-
-  handleCopy = () => {
-    this.setState({ copied: true }, () => {
-      setTimeout(() => {
-        this.setState({ copied: false });
-      }, 1500);
-    });
-  };
-
-  render() {
-    const { classes, name, bgColor, moreUrl } = this.props;
-    const colorboxCopyShow = this.state.copied
-      ? `${classes.copyOverlay} ${classes.copyOverlayShow}`
-      : classes.copyOverlay;
-    const colorboxMsgShow = this.state.copied
-      ? `${classes.copyMsg} ${classes.copyMsgShow}`
-      : classes.copyMsg;
-
-    return (
-      <CopyToClipboard text={bgColor} onCopy={this.handleCopy}>
-        <div className={classes.root}>
-          <div className={colorboxCopyShow} />
-          <div className={colorboxMsgShow}>
-            <h1>Copied!</h1>
-            <p className={classes.btnText}>{bgColor}</p>
-          </div>
-          <div>
-            <div className={classes.mainText}>{name}</div>
-            <button className={`${classes.btn} ${classes.btnCopy}`}>
-              <span className={classes.btnText}>Copy</span>
-            </button>
-            {moreUrl && (
-              <Link to={moreUrl} onClick={e => e.stopPropagation()}>
-                <button className={`${classes.btn} ${classes.btnMore}`}>
-                  <span className={classes.btnText}>More</span>
-                </button>
-              </Link>
-            )}
-          </div>
-        </div>
-      </CopyToClipboard>
-    );
-  }
-}
-
-export default withStyles(styles)(ColorBox);

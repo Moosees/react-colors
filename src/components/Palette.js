@@ -3,19 +3,7 @@ import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
 import { withStyles } from '@material-ui/styles';
-
-const styles = {
-  root: {
-    display: 'flex',
-    flexDirection: 'column',
-    height: '100vh'
-  },
-  colors: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(5, 1fr)',
-    height: '90%'
-  }
-};
+import styles from '../styles/PaletteStyles';
 
 class Palette extends Component {
   state = { level: 500, format: 'hex' };
