@@ -7,8 +7,14 @@ import { withStyles } from '@material-ui/styles';
 import { gatherShades } from '../helpers/singleColorHelpers';
 import styles from '../styles/SingleColorPaletteStyles';
 
-const SingleColorPalette = ({ classes, palette, paletteId, colorId }) => {
-  const [format, setFormat] = useState('hex');
+const SingleColorPalette = ({
+  classes,
+  palette,
+  paletteId,
+  colorId,
+  format,
+  changeFormat
+}) => {
   const shades = useMemo(() => gatherShades(palette, colorId), [
     palette,
     colorId
@@ -17,13 +23,10 @@ const SingleColorPalette = ({ classes, palette, paletteId, colorId }) => {
   const colorBoxes = shades.map(shade => (
     <ColorBox key={shade.id} name={shade.name} bgColor={shade[format]} />
   ));
-  const changeFormat = newFormat => {
-    setFormat(newFormat);
-  };
 
   return (
     <div className={classes.root}>
-      <Navbar changeFormat={changeFormat} />
+      <Navbar format={format} changeFormat={changeFormat} />
       <div className={classes.colors}>
         {colorBoxes}
         <Link to={`/palette/${paletteId}`} className={classes.backBox}>

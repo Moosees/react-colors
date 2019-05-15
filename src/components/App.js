@@ -7,6 +7,14 @@ import seedColors from '../helpers/seedColors';
 import { generatePalette } from '../helpers/paletteHelpers';
 
 class App extends Component {
+  state = {
+    format: 'hex'
+  };
+
+  changeFormat = format => {
+    this.setState({ format });
+  };
+
   findPalette(id) {
     return seedColors.find(palette => palette.id === id);
   }
@@ -29,6 +37,8 @@ class App extends Component {
               palette={generatePalette(
                 this.findPalette(routeProps.match.params.id)
               )}
+              format={this.state.format}
+              changeFormat={this.changeFormat}
             />
           )}
         />
@@ -42,6 +52,8 @@ class App extends Component {
               )}
               paletteId={routeProps.match.params.paletteId}
               colorId={routeProps.match.params.colorId}
+              format={this.state.format}
+              changeFormat={this.changeFormat}
             />
           )}
         />

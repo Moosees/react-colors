@@ -6,17 +6,15 @@ import { withStyles } from '@material-ui/styles';
 import styles from '../styles/PaletteStyles';
 
 class Palette extends Component {
-  state = { level: 500, format: 'hex' };
+  state = { level: 500 };
   changeLevel = level => {
     this.setState({ level });
   };
-  changeFormat = format => {
-    this.setState({ format });
-  };
+
   render() {
-    const { classes } = this.props;
+    const { classes, format, changeFormat } = this.props;
     const { colors, paletteName, emoji, id } = this.props.palette;
-    const { level, format } = this.state;
+    const { level } = this.state;
     const colorBoxes = colors[level].map(color => (
       <ColorBox
         bgColor={color[format]}
@@ -30,7 +28,8 @@ class Palette extends Component {
         <Navbar
           level={level}
           changeLevel={this.changeLevel}
-          changeFormat={this.changeFormat}
+          format={format}
+          changeFormat={changeFormat}
         />
         <div className={classes.colors}>{colorBoxes}</div>
         <PaletteFooter paletteName={paletteName} emoji={emoji} />

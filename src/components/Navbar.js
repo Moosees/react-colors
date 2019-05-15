@@ -11,12 +11,10 @@ import CloseIcon from '@material-ui/icons/Close';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import styles, { theme } from '../styles/NavbarStyles';
 
-const Navbar = ({ classes, level, changeLevel, changeFormat }) => {
-  const [format, setFormat] = useState('hex');
+const Navbar = ({ classes, level, changeLevel, format, changeFormat }) => {
   const [open, setOpen] = useState(false);
 
   const handleFormatChange = e => {
-    setFormat(e.target.value);
     setOpen(true);
     changeFormat(e.target.value);
   };
