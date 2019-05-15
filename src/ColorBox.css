@@ -11,7 +11,15 @@
   bottom: 0;
   width: 100%;
   padding: 0.8rem;
-  color: #000;
+  color: #111;
+}
+
+.ColorBox-text--light {
+  color: #e9e9e9;
+}
+
+.ColorBox-text--dark {
+  color: #111;
 }
 
 .ColorBox-btn {
