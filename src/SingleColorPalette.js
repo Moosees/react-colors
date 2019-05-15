@@ -15,8 +15,7 @@ const styles = {
   colors: {
     display: 'grid',
     gridTemplateColumns: 'repeat(5, 1fr)',
-    height: '90%',
-    lineHeight: '0'
+    height: '90%'
   },
   backBox: {
     backgroundColor: '#333',
