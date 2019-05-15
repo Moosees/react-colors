@@ -60,7 +60,6 @@ const gatherShades = (palette, colorId) => {
       shades[dsCounter++] = deSaturateShade(baseShade[0]);
       shades[baseCounter++] = baseShade[0];
       shades[sCounter++] = saturateShade(baseShade[0]);
-      console.log(shades);
     }
   }
   return shades;
