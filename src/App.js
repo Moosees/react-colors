@@ -40,6 +40,7 @@ class App extends Component {
               palette={generatePalette(
                 this.findPalette(routeProps.match.params.paletteId)
               )}
+              paletteId={routeProps.match.params.paletteId}
               colorId={routeProps.match.params.colorId}
             />
           )}

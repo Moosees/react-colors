@@ -11,6 +11,10 @@
   text-transform: uppercase;
 }
 
+.SingleColorPalette .ColorBox {
+  height: 50%;
+}
+
 .ColorBox-text {
   position: absolute;
   left: 0;
@@ -47,8 +51,14 @@
   width: 10rem;
   margin-top: -1.5rem;
   margin-left: -5rem;
+  border-radius: 2px;
   opacity: 0;
   transition: opacity 0.3s ease-in;
+}
+
+.ColorBox-btn-back {
+  cursor: zoom-out;
+  opacity: 1;
 }
 
 .ColorBox:hover .ColorBox-btn-copy {
