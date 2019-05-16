@@ -15,11 +15,17 @@ export default {
   },
   nav: {
     display: 'flex',
-    justifyContent: 'center',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
     width: '100%',
-    padding: '2rem',
+    padding: '2rem 0',
     fontSize: '2rem',
-    color: '#fff'
+    color: '#fff',
+    '& a': {
+      color: '#fff',
+      textTransform: 'uppercase',
+      fontSize: '1.4rem'
+    }
   },
   palette: {
     display: 'grid',
