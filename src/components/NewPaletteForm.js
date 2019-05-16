@@ -8,9 +8,11 @@ import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 
-const drawerWidth = 400;
+const drawerWidth = 300;
 
 const styles = theme => ({
   root: {
@@ -69,16 +71,22 @@ const styles = theme => ({
   }
 });
 
-const NewPaletteForm = ({ classes, theme }) => {
-  const [open, setOpen] = useState(false);
+const NewPaletteForm = ({ classes }) => {
+  const [open, setOpen] = useState(true);
+  const [currentColor, setCurrentColor] = useState('blue');
+  const [colors, setColors] = useState(['red', 'green', 'blue']);
 
-  function handleDrawerOpen() {
+  const handleDrawerOpen = () => {
     setOpen(true);
-  }
+  };
 
-  function handleDrawerClose() {
+  const handleDrawerClose = () => {
     setOpen(false);
-  }
+  };
+
+  const updateCurrentColor = newColor => {
+    setCurrentColor(newColor.hex);
+  };
 
   return (
     <div className={classes.root}>
@@ -115,7 +123,27 @@ const NewPaletteForm = ({ classes, theme }) => {
             <ChevronLeftIcon />
           </IconButton>
         </div>
-        <ChromePicker />
+        <Typography variant="h4">Design your palette</Typography>
+        <div>
+          <Button variant="contained" color="secondary">
+            Clear palette
+          </Button>
+          <Button variant="contained" color="primary">
+            Random Color
+          </Button>
+        </div>
+        <ChromePicker
+          color={currentColor}
+          onChangeComplete={updateCurrentColor}
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          style={{ backgroundColor: currentColor }}
+          onClick={() => setColors([...colors, currentColor])}
+        >
+          Add Color
+        </Button>
       </Drawer>
       <main
         className={classNames(classes.content, {
@@ -123,7 +151,9 @@ const NewPaletteForm = ({ classes, theme }) => {
         })}
       >
         <div className={classes.drawerHeader} />
-        {/* CONTENT GOES HERE */}
+        {colors.map(color => (
+          <li key={color}>{color}</li>
+        ))}
       </main>
     </div>
   );
