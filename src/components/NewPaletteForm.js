@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import chroma from 'chroma-js';
 
 const drawerWidth = 300;
 
@@ -82,7 +83,7 @@ const styles = theme => ({
 
 const NewPaletteForm = ({ classes }) => {
   const [open, setOpen] = useState(true);
-  const [currentColor, setCurrentColor] = useState('blue');
+  const [currentColor, setCurrentColor] = useState(chroma.random().hex());
   const [colors, setColors] = useState([{ name: 'red', color: 'red' }]);
   const [newName, setNewName] = useState('');
 
@@ -90,6 +91,9 @@ const NewPaletteForm = ({ classes }) => {
     ValidatorForm.addValidationRule('isNameUnique', value =>
       colors.every(({ name }) => name.toLowerCase() !== value.toLowerCase())
     );
+  }, [colors]);
+
+  useEffect(() => {
     ValidatorForm.addValidationRule('isColorUnique', () =>
       colors.every(({ color }) => color !== currentColor)
     );
@@ -117,6 +121,7 @@ const NewPaletteForm = ({ classes }) => {
       color: currentColor
     };
     setColors([...colors, newColor]);
+    setCurrentColor(chroma.random().hex());
     setNewName('');
   };
 
@@ -160,7 +165,11 @@ const NewPaletteForm = ({ classes }) => {
           <Button variant="contained" color="secondary">
             Clear palette
           </Button>
-          <Button variant="contained" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setCurrentColor(chroma.random().hex())}
+          >
             Random Color
           </Button>
         </div>
