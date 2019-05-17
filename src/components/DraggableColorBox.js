@@ -9,8 +9,8 @@ const styles = {
   }
 };
 
-const DraggableColorBox = ({ classes, bgColor }) => (
-  <div className={classes.root}>{bgColor}</div>
+const DraggableColorBox = ({ classes, bgColor, name }) => (
+  <div className={classes.root}>{name}</div>
 );
 
 export default withStyles(styles)(DraggableColorBox);
