@@ -147,6 +147,10 @@ const NewPaletteForm = ({ classes, history, savePalette, paletteNames }) => {
     history.push('/');
   };
 
+  const deleteColor = colorName => {
+    setColors(colors.filter(color => color.name !== colorName));
+  };
+
   return (
     <main className={classes.root}>
       <CssBaseline />
@@ -256,6 +260,7 @@ const NewPaletteForm = ({ classes, history, savePalette, paletteNames }) => {
               key={color.color}
               bgColor={color.color}
               name={color.name}
+              handleDelete={() => deleteColor(color.name)}
             />
           ))}
         </div>
