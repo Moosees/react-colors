@@ -81,7 +81,7 @@ const styles = theme => ({
   }
 });
 
-const NewPaletteForm = ({ classes }) => {
+const NewPaletteForm = ({ classes, history, savePalette }) => {
   const [open, setOpen] = useState(true);
   const [currentColor, setCurrentColor] = useState(chroma.random().hex());
   const [colors, setColors] = useState([{ name: 'red', color: 'red' }]);
@@ -125,10 +125,24 @@ const NewPaletteForm = ({ classes }) => {
     setNewName('');
   };
 
+  const handleSave = () => {
+    const newPaletteName = 'Test Palette';
+    const newPaletteEmoji = ':D';
+    const newPalette = {
+      paletteName: newPaletteName,
+      id: newPaletteName.toLowerCase().replace(/ /g, '-'),
+      emoji: newPaletteEmoji,
+      colors
+    };
+    savePalette(newPalette);
+    history.push('/');
+  };
+
   return (
     <main className={classes.root}>
       <CssBaseline />
       <AppBar
+        color="default"
         position="fixed"
         className={classNames(classes.appBar, {
           [classes.appBarShift]: open
@@ -143,7 +157,17 @@ const NewPaletteForm = ({ classes }) => {
           >
             <MenuIcon />
           </IconButton>
-          {/* HEADER GOES HERE */}
+          <Typography variant="h4">Create new palette!</Typography>
+          <Button variant="contained" color="primary" onClick={handleSave}>
+            Save palette
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => history.push('/')}
+          >
+            Go back
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer
