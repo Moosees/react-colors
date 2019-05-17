@@ -6,7 +6,8 @@ export default {
   },
   colors: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(5, 1fr)',
+    gridTemplateColumns: 'repeat(5, 20%)',
+    gridTemplateRows: 'repeat(4, 25%)',
     height: '90%'
   }
 };
