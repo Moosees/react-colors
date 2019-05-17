@@ -12,7 +12,7 @@ export default {
   colors: {
     display: 'flex',
     flexWrap: 'wrap',
-    height: '15rem',
+    height: '10rem',
     width: '100%',
     backgroundColor: '#f9f9f9',
     borderRadius: '5px',
