@@ -81,14 +81,16 @@ const styles = theme => ({
   }
 });
 
-const NewPaletteForm = ({ classes, history, savePalette }) => {
+const NewPaletteForm = ({ classes, history, savePalette, paletteNames }) => {
   const [open, setOpen] = useState(true);
   const [currentColor, setCurrentColor] = useState(chroma.random().hex());
   const [colors, setColors] = useState([{ name: 'red', color: 'red' }]);
-  const [newName, setNewName] = useState('');
+  const [newColorName, setNewColorName] = useState('');
+  const [newPaletteName, setNewPaletteName] = useState('');
+  const [newPaletteEmoji, setNewPaletteEmoji] = useState(':D');
 
   useEffect(() => {
-    ValidatorForm.addValidationRule('isNameUnique', value =>
+    ValidatorForm.addValidationRule('isColorNameUnique', value =>
       colors.every(({ name }) => name.toLowerCase() !== value.toLowerCase())
     );
   }, [colors]);
@@ -98,6 +100,15 @@ const NewPaletteForm = ({ classes, history, savePalette }) => {
       colors.every(({ color }) => color !== currentColor)
     );
   }, [colors, currentColor]);
+
+  useEffect(() => {
+    ValidatorForm.addValidationRule('isPaletteNameUnique', () =>
+      paletteNames.every(
+        paletteName =>
+          paletteName.toLowerCase() !== newPaletteName.toLowerCase()
+      )
+    );
+  }, [newPaletteName, paletteNames]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -111,23 +122,17 @@ const NewPaletteForm = ({ classes, history, savePalette }) => {
     setCurrentColor(newColor.hex);
   };
 
-  const handleChange = evt => {
-    setNewName(evt.target.value);
-  };
-
   const addNewColor = () => {
     const newColor = {
-      name: newName,
+      name: newColorName,
       color: currentColor
     };
     setColors([...colors, newColor]);
     setCurrentColor(chroma.random().hex());
-    setNewName('');
+    setNewColorName('');
   };
 
   const handleSave = () => {
-    const newPaletteName = 'Test Palette';
-    const newPaletteEmoji = ':D';
     const newPalette = {
       paletteName: newPaletteName,
       id: newPaletteName.toLowerCase().replace(/ /g, '-'),
@@ -158,9 +163,21 @@ const NewPaletteForm = ({ classes, history, savePalette }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h4">Create new palette!</Typography>
-          <Button variant="contained" color="primary" onClick={handleSave}>
-            Save palette
-          </Button>
+          <ValidatorForm onSubmit={handleSave}>
+            <TextValidator
+              label="Palette Name"
+              value={newPaletteName}
+              onChange={e => setNewPaletteName(e.target.value)}
+              validators={['required', 'isPaletteNameUnique']}
+              errorMessages={[
+                'Please name your palette',
+                'Name is already in use'
+              ]}
+            />
+            <Button variant="contained" color="primary" type="submit">
+              Save palette
+            </Button>
+          </ValidatorForm>
           <Button
             variant="contained"
             color="secondary"
@@ -203,9 +220,10 @@ const NewPaletteForm = ({ classes, history, savePalette }) => {
         />
         <ValidatorForm onSubmit={addNewColor}>
           <TextValidator
-            value={newName}
-            onChange={handleChange}
-            validators={['required', 'isColorUnique', 'isNameUnique']}
+            value={newColorName}
+            label="Color Name"
+            onChange={e => setNewColorName(e.target.value)}
+            validators={['required', 'isColorUnique', 'isColorNameUnique']}
             errorMessages={[
               'Please name your color',
               'Color is already added',
