@@ -84,7 +84,11 @@ const styles = theme => ({
 const NewPaletteForm = ({ classes, history, savePalette, paletteNames }) => {
   const [open, setOpen] = useState(true);
   const [currentColor, setCurrentColor] = useState(chroma.random().hex());
-  const [colors, setColors] = useState([{ name: 'red', color: 'red' }]);
+  const [colors, setColors] = useState([
+    { name: 'red', color: 'red' },
+    { name: 'white', color: '#fff' },
+    { name: 'black', color: '#000' }
+  ]);
   const [newColorName, setNewColorName] = useState('');
   const [newPaletteName, setNewPaletteName] = useState('');
   const [newPaletteEmoji, setNewPaletteEmoji] = useState(':D');
