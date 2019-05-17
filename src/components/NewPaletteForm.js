@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
+import DraggableColorBox from './DraggableColorBox';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -54,8 +55,9 @@ const styles = theme => ({
     justifyContent: 'flex-end'
   },
   content: {
+    height: 'calc(100vh - 64px)',
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: 0,
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -68,6 +70,12 @@ const styles = theme => ({
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 0
+  },
+  colorBoxContainer: {
+    height: '100%',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(5, 20%)',
+    gridTemplateRows: 'repeat(4, 25%)'
   }
 });
 
@@ -89,7 +97,7 @@ const NewPaletteForm = ({ classes }) => {
   };
 
   return (
-    <div className={classes.root}>
+    <main className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -151,11 +159,13 @@ const NewPaletteForm = ({ classes }) => {
         })}
       >
         <div className={classes.drawerHeader} />
-        {colors.map(color => (
-          <li key={color}>{color}</li>
-        ))}
+        <div className={classes.colorBoxContainer}>
+          {colors.map(color => (
+            <DraggableColorBox key={color} bgColor={color} />
+          ))}
+        </div>
       </main>
-    </div>
+    </main>
   );
 };
 
