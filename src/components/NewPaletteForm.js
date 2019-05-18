@@ -76,14 +76,17 @@ const styles = theme => ({
   }
 });
 
-const NewPaletteForm = ({ classes, history, savePalette, paletteNames }) => {
+const NewPaletteForm = ({
+  classes,
+  history,
+  savePalette,
+  paletteNames,
+  starterPalette,
+  maxPaletteSize = 20
+}) => {
   const [open, setOpen] = useState(true);
   const [currentColor, setCurrentColor] = useState(chroma.random().hex());
-  const [colors, setColors] = useState([
-    { name: 'red', color: 'red' },
-    { name: 'white', color: '#fff' },
-    { name: 'black', color: '#000' }
-  ]);
+  const [colors, setColors] = useState(starterPalette);
   const [newColorName, setNewColorName] = useState('');
   const [newPaletteName, setNewPaletteName] = useState('');
   const [newPaletteEmoji, setNewPaletteEmoji] = useState(':D');
@@ -210,7 +213,11 @@ const NewPaletteForm = ({ classes, history, savePalette, paletteNames }) => {
         </div>
         <Typography variant="h4">Design your palette</Typography>
         <div>
-          <Button variant="contained" color="secondary">
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => setColors([])}
+          >
             Clear palette
           </Button>
           <Button
@@ -240,10 +247,14 @@ const NewPaletteForm = ({ classes, history, savePalette, paletteNames }) => {
           <Button
             variant="contained"
             color="primary"
-            style={{ backgroundColor: currentColor }}
+            style={{
+              backgroundColor: currentColor,
+              color: chroma(currentColor).luminance() > 0.55 ? '#111' : '#fff'
+            }}
             type="submit"
+            disabled={colors.length >= maxPaletteSize}
           >
-            Add Color
+            {colors.length >= maxPaletteSize ? 'Palette is full' : 'Add Color'}
           </Button>
         </ValidatorForm>
       </Drawer>
