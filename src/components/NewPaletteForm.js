@@ -3,11 +3,7 @@ import classNames from 'classnames';
 import DraggableColorList from './DraggableColorList';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -15,66 +11,8 @@ import { ChromePicker } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import chroma from 'chroma-js';
 import arrayMove from 'array-move';
-
-const drawerWidth = 300;
-
-const styles = theme => ({
-  root: {
-    display: 'flex'
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    })
-  },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 20
-  },
-  hide: {
-    display: 'none'
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0
-  },
-  drawerPaper: {
-    width: drawerWidth
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end'
-  },
-  content: {
-    height: 'calc(100vh - 64px)',
-    flexGrow: 1,
-    padding: 0,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    }),
-    marginLeft: -drawerWidth
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen
-    }),
-    marginLeft: 0
-  }
-});
+import NewPaletteNav from './NewPaletteNav';
+import styles from '../styles/NewPaletteStyles';
 
 const NewPaletteForm = ({
   classes,
@@ -88,8 +26,6 @@ const NewPaletteForm = ({
   const [currentColor, setCurrentColor] = useState(chroma.random().hex());
   const [colors, setColors] = useState(starterPalette);
   const [newColorName, setNewColorName] = useState('');
-  const [newPaletteName, setNewPaletteName] = useState('');
-  const [newPaletteEmoji, setNewPaletteEmoji] = useState(':D');
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isColorNameUnique', value =>
@@ -102,15 +38,6 @@ const NewPaletteForm = ({
       colors.every(({ color }) => color !== currentColor)
     );
   }, [colors, currentColor]);
-
-  useEffect(() => {
-    ValidatorForm.addValidationRule('isPaletteNameUnique', () =>
-      paletteNames.every(
-        paletteName =>
-          paletteName.toLowerCase() !== newPaletteName.toLowerCase()
-      )
-    );
-  }, [newPaletteName, paletteNames]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -134,7 +61,7 @@ const NewPaletteForm = ({
     setNewColorName('');
   };
 
-  const handleSave = () => {
+  const handleSave = (newPaletteName, newPaletteEmoji) => {
     const newPalette = {
       paletteName: newPaletteName,
       id: newPaletteName.toLowerCase().replace(/ /g, '-'),
@@ -155,48 +82,13 @@ const NewPaletteForm = ({
 
   return (
     <main className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        color="default"
-        position="fixed"
-        className={classNames(classes.appBar, {
-          [classes.appBarShift]: open
-        })}
-      >
-        <Toolbar disableGutters={!open}>
-          <IconButton
-            color="inherit"
-            aria-label="Open drawer"
-            onClick={handleDrawerOpen}
-            className={classNames(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h4">Create new palette!</Typography>
-          <ValidatorForm onSubmit={handleSave}>
-            <TextValidator
-              label="Palette Name"
-              value={newPaletteName}
-              onChange={e => setNewPaletteName(e.target.value)}
-              validators={['required', 'isPaletteNameUnique']}
-              errorMessages={[
-                'Please name your palette',
-                'Name is already in use'
-              ]}
-            />
-            <Button variant="contained" color="primary" type="submit">
-              Save palette
-            </Button>
-          </ValidatorForm>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => history.push('/')}
-          >
-            Go back
-          </Button>
-        </Toolbar>
-      </AppBar>
+      <NewPaletteNav
+        handleDrawerOpen={handleDrawerOpen}
+        handleSave={handleSave}
+        open={open}
+        paletteNames={paletteNames}
+        classes={classes}
+      />
       <Drawer
         className={classes.drawer}
         variant="persistent"
