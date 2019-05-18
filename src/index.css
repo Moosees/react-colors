@@ -14,3 +14,10 @@ html {
 body {
   font-family: Roboto;
 }
+
+.dragged {
+  cursor: grabbing !important;
+  cursor: -moz-grabbing !important;
+  cursor: -webkit-grabbing !important;
+  pointer-events: auto !important;
+}

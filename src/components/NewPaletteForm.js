@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import DraggableColorBox from './DraggableColorBox';
+import DraggableColorList from './DraggableColorList';
 import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -14,6 +14,7 @@ import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import chroma from 'chroma-js';
+import arrayMove from 'array-move';
 
 const drawerWidth = 300;
 
@@ -72,12 +73,6 @@ const styles = theme => ({
       duration: theme.transitions.duration.enteringScreen
     }),
     marginLeft: 0
-  },
-  colorBoxContainer: {
-    height: '100%',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(5, 20%)',
-    gridTemplateRows: 'repeat(4, 25%)'
   }
 });
 
@@ -149,6 +144,10 @@ const NewPaletteForm = ({ classes, history, savePalette, paletteNames }) => {
 
   const deleteColor = colorName => {
     setColors(colors.filter(color => color.name !== colorName));
+  };
+
+  const onSortEnd = ({ oldIndex, newIndex }) => {
+    setColors(arrayMove(colors, oldIndex, newIndex));
   };
 
   return (
@@ -254,16 +253,15 @@ const NewPaletteForm = ({ classes, history, savePalette, paletteNames }) => {
         })}
       >
         <div className={classes.drawerHeader} />
-        <div className={classes.colorBoxContainer}>
-          {colors.map(color => (
-            <DraggableColorBox
-              key={color.color}
-              bgColor={color.color}
-              name={color.name}
-              handleDelete={() => deleteColor(color.name)}
-            />
-          ))}
-        </div>
+        <DraggableColorList
+          axis="xy"
+          pressDelay={100}
+          // distance={2}
+          helperClass="dragged"
+          colors={colors}
+          deleteColor={deleteColor}
+          onSortEnd={onSortEnd}
+        />
       </main>
     </main>
   );
