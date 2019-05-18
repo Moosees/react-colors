@@ -15,7 +15,8 @@ const NewPaletteNav = ({
   handleDrawerOpen,
   handleSave,
   paletteNames,
-  open
+  open,
+  setColors
 }) => {
   const [newPaletteName, setNewPaletteName] = useState('');
   const [newPaletteEmoji, setNewPaletteEmoji] = useState(':D');
@@ -66,6 +67,13 @@ const NewPaletteNav = ({
               Save palette
             </Button>
           </ValidatorForm>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => setColors([])}
+          >
+            Clear palette
+          </Button>
           <Link to="/" style={{ textDecoration: 'none' }}>
             <Button variant="contained" color="secondary">
               Go back
