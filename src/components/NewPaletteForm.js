@@ -29,19 +29,12 @@ const NewPaletteForm = ({
     setOpen(false);
   };
 
-  const addNewColor = newColor => {
-    setColors([...colors, newColor]);
+  const clearPalette = () => {
+    setColors([]);
   };
 
-  const handleSave = (newPaletteName, newPaletteEmoji) => {
-    const newPalette = {
-      paletteName: newPaletteName,
-      id: newPaletteName.toLowerCase().replace(/ /g, '-'),
-      emoji: newPaletteEmoji,
-      colors
-    };
-    savePalette(newPalette);
-    history.push('/');
+  const addNewColor = newColor => {
+    setColors([...colors, newColor]);
   };
 
   const deleteColor = colorName => {
@@ -55,11 +48,13 @@ const NewPaletteForm = ({
   return (
     <main className={classes.root}>
       <NewPaletteNav
-        setColors={setColors}
+        colors={colors}
+        clearPalette={clearPalette}
         handleDrawerOpen={handleDrawerOpen}
-        handleSave={handleSave}
+        savePalette={savePalette}
         open={open}
         paletteNames={paletteNames}
+        history={history}
       />
       <Drawer
         className={classes.drawer}
