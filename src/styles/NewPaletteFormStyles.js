@@ -4,6 +4,12 @@ export default theme => ({
   root: {
     display: 'flex'
   },
+  colorContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: '70%'
+  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0

@@ -75,11 +75,13 @@ const NewPaletteForm = ({
             <ChevronLeftIcon />
           </IconButton>
         </div>
-        <NewPaletteColorPicker
-          colors={colors}
-          addNewColor={addNewColor}
-          maxPaletteSize={maxPaletteSize}
-        />
+        <div className={classes.colorContainer}>
+          <NewPaletteColorPicker
+            colors={colors}
+            addNewColor={addNewColor}
+            maxPaletteSize={maxPaletteSize}
+          />
+        </div>
       </Drawer>
       <main
         className={classNames(classes.content, {

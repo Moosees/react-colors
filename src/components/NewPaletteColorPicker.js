@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import chroma from 'chroma-js';
+import styles, { theme } from '../styles/NewPaletteColorPickerStyles';
 
 const NewPaletteColorPicker = ({
+  classes,
   colors,
   addNewColor,
   maxPaletteSize
@@ -39,39 +42,50 @@ const NewPaletteColorPicker = ({
   };
 
   return (
-    <div>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => setCurrentColor(chroma.random().hex())}
-      >
-        Random Color
-      </Button>
+    <div className={classes.root}>
+      <div className={classes.buttons}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setCurrentColor(chroma.random().hex())}
+        >
+          Random Color
+        </Button>
+        <Button variant="contained" color="secondary">
+          Pick color
+        </Button>
+      </div>
       <ChromePicker
+        width="100%"
         color={currentColor}
         onChangeComplete={updateCurrentColor}
       />
       <ValidatorForm onSubmit={handleAddNewColor}>
-        <TextValidator
-          value={newColorName}
-          label="Color Name"
-          onChange={e => setNewColorName(e.target.value)}
-          validators={['required', 'isColorUnique', 'isColorNameUnique']}
-          errorMessages={[
-            'Please name your color',
-            'Color is already added',
-            'Name is already in use'
-          ]}
-        />
+        <MuiThemeProvider theme={theme}>
+          <TextValidator
+            value={newColorName}
+            label="Color Name"
+            variant="outlined"
+            margin="none"
+            className={classes.colorNameInput}
+            onChange={e => setNewColorName(e.target.value)}
+            validators={['required', 'isColorUnique', 'isColorNameUnique']}
+            errorMessages={[
+              'Please name your color',
+              'Color is already added',
+              'Name is already in use'
+            ]}
+          />
+        </MuiThemeProvider>
         <Button
           variant="contained"
-          color="primary"
+          className={classes.addColorBtn}
+          type="submit"
+          disabled={colors.length >= maxPaletteSize}
           style={{
             backgroundColor: currentColor,
             color: chroma(currentColor).luminance() > 0.55 ? '#111' : '#fff'
           }}
-          type="submit"
-          disabled={colors.length >= maxPaletteSize}
         >
           {colors.length >= maxPaletteSize ? 'Palette is full' : 'Add Color'}
         </Button>
@@ -79,4 +93,4 @@ const NewPaletteColorPicker = ({
     </div>
   );
 };
-export default NewPaletteColorPicker;
+export default withStyles(styles)(NewPaletteColorPicker);
