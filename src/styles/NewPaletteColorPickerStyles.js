@@ -1,5 +1,3 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-
 export default {
   root: {
     display: 'flex',
@@ -9,16 +7,10 @@ export default {
     width: '100%',
     margin: '1rem'
   },
-  buttons: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+  randomColorBtn: {
     width: '100%',
     marginBottom: '0.8rem',
-    '& button': {
-      width: '49%',
-      fontSize: '1.2rem'
-    }
+    fontSize: '1.2rem'
   },
   colorNameInput: {
     width: '100%',
@@ -32,12 +24,3 @@ export default {
     fontSize: '2rem'
   }
 };
-
-export const theme = createMuiTheme({
-  typography: {
-    // Tell Material-UI what the font-size on the html element is.
-    htmlFontSize: 10,
-    useNextVariants: true,
-    fontSize: 14
-  }
-});

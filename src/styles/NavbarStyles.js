@@ -1,5 +1,3 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-
 export default {
   root: {
     display: 'flex',
@@ -53,12 +51,3 @@ export default {
     marginRight: '1rem'
   }
 };
-
-export const theme = createMuiTheme({
-  typography: {
-    // Tell Material-UI what the font-size on the html element is.
-    htmlFontSize: 10,
-    useNextVariants: true,
-    fontSize: 12
-  }
-});

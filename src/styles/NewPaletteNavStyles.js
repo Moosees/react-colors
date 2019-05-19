@@ -11,7 +11,8 @@ export default theme => ({
     display: 'flex',
     alignItems: 'center',
     '& button': {
-      margin: '0 2px'
+      margin: '0 2px',
+      fontSize: '1.1rem'
     }
   },
   appBar: {

@@ -9,7 +9,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { MuiThemeProvider } from '@material-ui/core/styles';
-import styles, { theme } from '../styles/NavbarStyles';
+import styles from '../styles/NavbarStyles';
+import theme from '../styles/muiRemFix';
 
 const Navbar = ({ classes, level, changeLevel, format, changeFormat }) => {
   const [open, setOpen] = useState(false);

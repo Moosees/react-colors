@@ -4,7 +4,8 @@ import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import chroma from 'chroma-js';
-import styles, { theme } from '../styles/NewPaletteColorPickerStyles';
+import styles from '../styles/NewPaletteColorPickerStyles';
+import theme from '../styles/muiRemFix';
 
 const NewPaletteColorPicker = ({
   classes,
@@ -43,18 +44,14 @@ const NewPaletteColorPicker = ({
 
   return (
     <div className={classes.root}>
-      <div className={classes.buttons}>
         <Button
           variant="contained"
           color="primary"
+          className={classes.randomColorBtn}
           onClick={() => setCurrentColor(chroma.random().hex())}
         >
           Random Color
         </Button>
-        <Button variant="contained" color="secondary">
-          Pick color
-        </Button>
-      </div>
       <ChromePicker
         width="100%"
         color={currentColor}
