@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Link } from 'react-router-dom';
+import styles from '../styles/NewPaletteNavStyles';
 
 const NewPaletteNav = ({
   classes,
@@ -31,24 +32,23 @@ const NewPaletteNav = ({
   }, [newPaletteName, paletteNames]);
 
   return (
-    <div>
-      <CssBaseline />
-      <AppBar
-        color="default"
-        position="fixed"
-        className={classNames(classes.appBar, {
-          [classes.appBarShift]: open
-        })}
-      >
-        <Toolbar disableGutters={!open}>
-          <IconButton
-            color="inherit"
-            aria-label="Open drawer"
-            onClick={handleDrawerOpen}
-            className={classNames(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
+    <AppBar
+      color="default"
+      position="fixed"
+      className={classNames(classes.appBar, {
+        [classes.appBarShift]: open
+      })}
+    >
+      <Toolbar>
+        <IconButton
+          color="inherit"
+          aria-label="Open drawer"
+          onClick={handleDrawerOpen}
+          className={classNames(classes.menuButton, open && classes.hide)}
+        >
+          <MenuIcon />
+        </IconButton>
+        <div className={classes.navbar}>
           <Typography variant="h4">Create new palette!</Typography>
           <ValidatorForm
             onSubmit={() => handleSave(newPaletteName, newPaletteEmoji)}
@@ -64,25 +64,30 @@ const NewPaletteNav = ({
               ]}
             />
             <Button variant="contained" color="primary" type="submit">
-              Save palette
+              Save
             </Button>
           </ValidatorForm>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => setColors([])}
-          >
-            Clear palette
-          </Button>
-          <Link to="/" style={{ textDecoration: 'none' }}>
-            <Button variant="contained" color="secondary">
-              Go back
+          <div className={classes.buttons}>
+            <Button variant="contained" color="primary">
+              Save Palette
             </Button>
-          </Link>
-        </Toolbar>
-      </AppBar>
-    </div>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => setColors([])}
+            >
+              Clear palette
+            </Button>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              <Button variant="contained" color="primary">
+                Go back
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </Toolbar>
+    </AppBar>
   );
 };
 
-export default NewPaletteNav;
+export default withStyles(styles, { withTheme: true })(NewPaletteNav);

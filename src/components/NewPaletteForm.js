@@ -8,7 +8,7 @@ import arrayMove from 'array-move';
 import DraggableColorList from './DraggableColorList';
 import NewPaletteNav from './NewPaletteNav';
 import NewPaletteColorPicker from './NewPaletteColorPicker';
-import styles from '../styles/NewPaletteStyles';
+import styles from '../styles/NewPaletteFormStyles';
 
 const NewPaletteForm = ({
   classes,
@@ -60,7 +60,6 @@ const NewPaletteForm = ({
         handleSave={handleSave}
         open={open}
         paletteNames={paletteNames}
-        classes={classes}
       />
       <Drawer
         className={classes.drawer}
