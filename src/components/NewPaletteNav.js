@@ -39,7 +39,7 @@ const NewPaletteNav = ({
           <MenuIcon />
         </IconButton>
         <div className={classes.navbar}>
-          <Typography variant="h4">Create new palette!</Typography>
+          <Typography variant="h4">Create your own palette!</Typography>
           <div className={classes.buttons}>
             <NewPaletteFormDialogs
               paletteNames={paletteNames}

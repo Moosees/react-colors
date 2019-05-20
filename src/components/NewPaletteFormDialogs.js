@@ -17,7 +17,7 @@ const NewPaletteFormDialogs = ({
 }) => {
   const [newPaletteName, setNewPaletteName] = useState('');
   const [newPaletteEmoji, setNewPaletteEmoji] = useState(':D');
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isPaletteNameUnique', () =>
@@ -58,9 +58,16 @@ const NewPaletteFormDialogs = ({
           onClose={handleClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Save palette</DialogTitle>
+          <DialogTitle
+            style={{ textTransform: 'uppercase' }}
+            id="form-dialog-title"
+          >
+            Save palette
+          </DialogTitle>
           <DialogContent>
-            <DialogContentText>
+            <DialogContentText
+              style={{ marginBottom: '2rem', marginRight: '2rem' }}
+            >
               Please enter a unique name for your palette!
             </DialogContentText>
             <ValidatorForm
@@ -69,6 +76,7 @@ const NewPaletteFormDialogs = ({
               <TextValidator
                 autoFocus
                 label="Palette Name"
+                fullWidth
                 value={newPaletteName}
                 onChange={e => setNewPaletteName(e.target.value)}
                 validators={['required', 'isPaletteNameUnique']}
@@ -81,7 +89,7 @@ const NewPaletteFormDialogs = ({
                 <Button onClick={handleClose} color="primary">
                   Cancel
                 </Button>
-                <Button type="submit" color="primary">
+                <Button type="submit" variant="contained" color="primary">
                   Save
                 </Button>
               </DialogActions>
