@@ -27,10 +27,12 @@ class ColorBox extends Component {
     return (
       <CopyToClipboard text={bgColor} onCopy={this.handleCopy}>
         <div className={classes.root}>
-          <div className={colorboxCopyShow} />
-          <div className={colorboxMsgShow}>
-            <h1>Copied!</h1>
-            <p className={classes.btnText}>{bgColor}</p>
+          <div style={{visibility: !this.state.copied && 'hidden'}}>
+            <div className={colorboxCopyShow} />
+            <div className={colorboxMsgShow}>
+              <h1>Copied!</h1>
+              <p className={classes.btnText}>{bgColor}</p>
+            </div>
           </div>
           <div>
             <div className={classes.mainText}>{name}</div>
