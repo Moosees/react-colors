@@ -7,6 +7,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { Picker } from 'emoji-mart';
+import 'emoji-mart/css/emoji-mart.css';
 import theme from '../styles/muiRemFix';
 
 const NewPaletteFormDialogs = ({
@@ -16,8 +18,8 @@ const NewPaletteFormDialogs = ({
   colors
 }) => {
   const [newPaletteName, setNewPaletteName] = useState('');
-  const [newPaletteEmoji, setNewPaletteEmoji] = useState(':D');
-  const [open, setOpen] = useState(false);
+  const [newPaletteEmoji, setNewPaletteEmoji] = useState('');
+  const [stage, setStage] = useState(0);
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isPaletteNameUnique', () =>
@@ -28,15 +30,15 @@ const NewPaletteFormDialogs = ({
     );
   }, [newPaletteName, paletteNames]);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
-    setOpen(false);
+    setStage(0);
   };
 
-  const handleSave = (newPaletteName, newPaletteEmoji) => {
+  const handleStage = () => {
+    setStage(stage + 1);
+  };
+
+  const handleSave = () => {
     const newPalette = {
       paletteName: newPaletteName,
       id: newPaletteName.toLowerCase().replace(/ /g, '-'),
@@ -49,12 +51,12 @@ const NewPaletteFormDialogs = ({
 
   return (
     <div>
-      <Button variant="contained" color="primary" onClick={handleClickOpen}>
+      <Button variant="contained" color="primary" onClick={handleStage}>
         Save Palette
       </Button>
       <MuiThemeProvider theme={theme}>
         <Dialog
-          open={open}
+          open={stage === 1}
           onClose={handleClose}
           aria-labelledby="form-dialog-title"
         >
@@ -65,14 +67,12 @@ const NewPaletteFormDialogs = ({
             Save palette
           </DialogTitle>
           <DialogContent>
-            <DialogContentText
-              style={{ marginBottom: '2rem', marginRight: '2rem' }}
-            >
-              Please enter a unique name for your palette!
-            </DialogContentText>
-            <ValidatorForm
-              onSubmit={() => handleSave(newPaletteName, newPaletteEmoji)}
-            >
+            <ValidatorForm onSubmit={handleStage}>
+              <DialogContentText
+                style={{ marginBottom: '2rem', marginRight: '2rem' }}
+              >
+                Please enter a unique name for your palette!
+              </DialogContentText>
               <TextValidator
                 autoFocus
                 label="Palette Name"
@@ -90,10 +90,31 @@ const NewPaletteFormDialogs = ({
                   Cancel
                 </Button>
                 <Button type="submit" variant="contained" color="primary">
-                  Save
+                  Confirm
                 </Button>
               </DialogActions>
             </ValidatorForm>
+          </DialogContent>
+        </Dialog>
+        <Dialog
+          open={stage === 2}
+          onClose={handleClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogContent>
+            <Picker
+              onSelect={emoji => setNewPaletteEmoji(emoji.native)}
+              title="Pick an emoji!"
+              native={true}
+            />
+            <DialogActions>
+              <Button onClick={handleClose} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={handleSave} variant="contained" color="primary">
+                Save
+              </Button>
+            </DialogActions>
           </DialogContent>
         </Dialog>
       </MuiThemeProvider>
