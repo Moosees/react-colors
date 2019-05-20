@@ -1,4 +1,4 @@
-const drawerWidth = 300;
+import { DRAWER_WIDTH } from '../constants';
 
 export default theme => ({
   navbar: {
@@ -22,16 +22,16 @@ export default theme => ({
     })
   },
   appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
+    width: `calc(100% - ${DRAWER_WIDTH}px)`,
+    marginLeft: DRAWER_WIDTH,
     transition: theme.transitions.create(['margin', 'width'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen
     })
   },
   menuButton: {
-    marginLeft: 12,
-    marginRight: 20
+    marginLeft: -10,
+    marginRight: 20,
   },
   hide: {
     display: 'none'

@@ -1,4 +1,4 @@
-const drawerWidth = 300;
+import { DRAWER_WIDTH } from '../constants';
 
 export default theme => ({
   root: {
@@ -11,11 +11,11 @@ export default theme => ({
     minHeight: '70%'
   },
   drawer: {
-    width: drawerWidth,
+    width: DRAWER_WIDTH,
     flexShrink: 0
   },
   drawerPaper: {
-    width: drawerWidth
+    width: DRAWER_WIDTH
   },
   drawerHeader: {
     display: 'flex',
@@ -32,7 +32,7 @@ export default theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
-    marginLeft: -drawerWidth
+    marginLeft: -DRAWER_WIDTH
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
