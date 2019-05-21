@@ -1,10 +1,14 @@
 import React from 'react';
 import { withStyles } from '@material-ui/styles';
+import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 import styles from '../styles/MiniPaletteStyles';
 
 const MiniPalette = ({ classes, paletteName, emoji, colors, handleClick }) => {
   return (
     <div className={classes.root} onClick={handleClick}>
+      <div className={classes.delete}>
+        <DeleteRoundedIcon className={classes.deleteIcon} />
+      </div>
       <div className={classes.colors}>
         {colors.map(color => (
           <span

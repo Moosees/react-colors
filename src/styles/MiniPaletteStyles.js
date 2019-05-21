@@ -5,8 +5,9 @@ export default {
     padding: '0.5rem 0.5rem 0',
     position: 'relative',
     overflow: 'hidden',
-    '&:hover': {
-      cursor: 'pointer'
+    cursor: 'pointer',
+    '&:hover div:first-child': {
+      opacity: '1'
     }
   },
   colors: {
@@ -32,5 +33,20 @@ export default {
   },
   emoji: {
     fontSize: '1.8rem'
+  },
+  delete: {
+    position: 'absolute',
+    top: '0',
+    right: '0',
+    opacity: '0',
+    zIndex: '10',
+    transition: 'opacity 0.3s ease-in-out',
+    '& svg': {
+      height: '3.5rem',
+      width: '3.5rem',
+      color: '#ff0a21',
+      backgroundColor: 'rgb(100, 100, 100, 0.6)',
+      borderRadius: '2px'
+    }
   }
 };
