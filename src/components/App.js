@@ -9,15 +9,13 @@ import { generatePalette } from '../helpers/paletteHelpers';
 
 class App extends Component {
   state = {
-    palettes: [],
+    palettes: this.getLocalPalettes(),
     format: 'hex'
   };
 
-  componentDidMount() {
+  getLocalPalettes() {
     const localPalettes = JSON.parse(window.localStorage.getItem('palettes'));
-    localPalettes
-      ? this.setState({ palettes: localPalettes })
-      : this.setState({ palettes: seedColors });
+    return localPalettes ? localPalettes : seedColors;
   }
 
   syncLocalStorage() {
