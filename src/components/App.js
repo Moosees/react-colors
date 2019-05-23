@@ -51,6 +51,10 @@ class App extends Component {
     );
   };
 
+  resetPaletteList = () => {
+    this.setState({ palettes: seedColors }, this.syncLocalStorage);
+  };
+
   render() {
     const paletteNames = this.state.palettes.map(item => item.paletteName);
 
@@ -75,6 +79,7 @@ class App extends Component {
             <PaletteList
               paletteList={this.state.palettes}
               deletePalette={this.deletePalette}
+              resetPaletteList={this.resetPaletteList}
               {...routeProps}
             />
           )}
