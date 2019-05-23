@@ -3,11 +3,27 @@ import { withStyles } from '@material-ui/styles';
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 import styles from '../styles/MiniPaletteStyles';
 
-const MiniPalette = ({ classes, paletteName, emoji, colors, handleClick }) => {
+const MiniPalette = ({
+  classes,
+  paletteName,
+  emoji,
+  colors,
+  id,
+  deletePalette,
+  handleClick
+}) => {
+  const handleDelete = e => {
+    e.stopPropagation();
+    deletePalette(id);
+  };
+
   return (
     <div className={classes.root} onClick={handleClick}>
       <div className={classes.delete}>
-        <DeleteRoundedIcon className={classes.deleteIcon} />
+        <DeleteRoundedIcon
+          className={classes.deleteIcon}
+          onClick={handleDelete}
+        />
       </div>
       <div className={classes.colors}>
         {colors.map(color => (
