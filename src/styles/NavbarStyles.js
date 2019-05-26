@@ -27,10 +27,11 @@ export default {
   },
   sliderContainer: {
     display: 'flex',
+    alignItems: 'center',
     '& span': {
       fontSize: '1.2rem',
       [sizes.down('medium')]: {
-        margin: '0 0.5rem',
+        marginLeft: '0.5rem',
         fontSize: '1.2rem'
       }
     }
@@ -38,8 +39,14 @@ export default {
   sliderBtn: {
     cursor: 'pointer',
     display: 'none',
+    borderRadius: '50%',
+    width: '2rem',
+    height: '2rem',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
     [sizes.down('medium')]: {
-      display: 'inline-block'
+      display: 'flex'
     }
   },
   slider: {
