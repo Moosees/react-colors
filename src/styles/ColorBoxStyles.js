@@ -10,12 +10,15 @@ export default {
     marginBottom: '-1px',
     marginRight: '-1px',
     backgroundColor: ({ bgColor }) => bgColor,
-    '&:hover button': {
-      opacity: 1
+    [sizes.down('medium')]: {
+      fontSize: '1rem'
     },
     [sizes.down('tiny')]: {
       minHeight: '5%',
       marginBottom: '-3.5px'
+    },
+    '&:hover button': {
+      opacity: 1
     }
   },
   mainText: {
@@ -35,7 +38,11 @@ export default {
     textTransform: 'uppercase',
     lineHeight: '3rem',
     color: '#e9e9e9',
-    backgroundColor: 'rgba(255, 255, 255, 0.3)'
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    [sizes.down('medium')]: {
+      fontSize: '1rem',
+      lineHeight: '2.5rem'
+    }
   },
   btnText: {
     color: ({ bgColor }) =>
@@ -46,7 +53,11 @@ export default {
     right: 0,
     top: 0,
     height: '3rem',
-    width: '6rem'
+    width: '6rem',
+    [sizes.down('medium')]: {
+      height: '2.5rem',
+      width: '5rem'
+    }
   },
   btnCopy: {
     cursor: 'copy',
@@ -58,7 +69,13 @@ export default {
     marginLeft: '-5rem',
     borderRadius: 2,
     opacity: 0,
-    transition: 'opacity 0.3s ease-in'
+    transition: 'opacity 0.3s ease-in',
+    [sizes.down('medium')]: {
+      height: '2.5rem',
+      width: '8rem',
+      marginLeft: '-4rem',
+      marginTop: '-1.25rem'
+    }
   },
   copyOverlay: {
     height: '100%',
@@ -92,6 +109,12 @@ export default {
     transition: 'transform 0.3s ease-in-out',
     transitionDelay: '0.3s',
     zIndex: 0,
+    [sizes.down('smallest')]: {
+      fontSize: '3rem'
+    },
+    [sizes.down('tiny')]: {
+      fontSize: '2.5rem'
+    },
     '& h1': {
       width: '100%',
       marginBottom: 0,
@@ -109,7 +132,13 @@ export default {
     '& p': {
       marginTop: '0.5rem',
       fontSize: '3rem',
-      fontWeight: 100
+      fontWeight: 100,
+      [sizes.down('smallest')]: {
+        fontSize: '2.5rem'
+      },
+      [sizes.down('tiny')]: {
+        fontSize: '2rem'
+      }
     }
   },
   copyMsgShow: {
