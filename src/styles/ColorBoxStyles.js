@@ -1,5 +1,5 @@
 import chroma from 'chroma-js';
-import sizes from '../styles/mediaQueries'
+import sizes from '../styles/mediaQueries';
 
 export default {
   root: {
@@ -7,12 +7,14 @@ export default {
     position: 'relative',
     letterSpacing: 2,
     fontSize: '1.1rem',
+    marginBottom: '-1px',
+    marginRight: '-1px',
     backgroundColor: ({ bgColor }) => bgColor,
     '&:hover button': {
       opacity: 1
     },
     [sizes.down('tiny')]: {
-      height: '15rem',
+      minHeight: '5%',
       marginBottom: '-3.5px'
     }
   },

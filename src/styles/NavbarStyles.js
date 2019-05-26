@@ -29,7 +29,7 @@ export default {
     display: 'flex',
     '& span': {
       fontSize: '1.2rem',
-      [sizes.down('small')]: {
+      [sizes.down('medium')]: {
         margin: '0 0.5rem',
         fontSize: '1.2rem'
       }

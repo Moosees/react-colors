@@ -21,8 +21,26 @@ const SingleColorPalette = ({
   ]);
 
   const colorBoxes = shades.map(shade => (
-    <ColorBox key={shade.id} name={shade.name} bgColor={shade[format]} />
+    <div className={classes.shadesBox} key={shade.base.id}>
+      <ColorBox
+        key={shade.ds.id}
+        name={shade.ds.name}
+        bgColor={shade.ds[format]}
+      />
+      <ColorBox
+        key={shade.base.id}
+        name={shade.base.name}
+        bgColor={shade.base[format]}
+      />
+      <ColorBox
+        key={shade.s.id}
+        name={shade.s.name}
+        bgColor={shade.s[format]}
+      />
+    </div>
   ));
+
+  console.log(shades);
 
   return (
     <div className={classes.root}>

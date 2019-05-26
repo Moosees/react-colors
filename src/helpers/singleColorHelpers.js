@@ -42,24 +42,18 @@ const deSaturateShade = shade => {
 
 const gatherShades = (palette, colorId) => {
   const allColors = palette.colors;
-  let shades = Array(29);
-  let dsCounter = 0;
-  let baseCounter = 5;
-  let sCounter = 10;
+  let shades = [];
 
   for (let key in allColors) {
     if (key % 100 === 0) {
       const baseShade = allColors[key].filter(
         color => color.shortId === colorId
       );
-      if(dsCounter === 5) {
-        dsCounter = 15;
-        baseCounter = 20;
-        sCounter = 25;
-      }
-      shades[dsCounter++] = deSaturateShade(baseShade[0]);
-      shades[baseCounter++] = baseShade[0];
-      shades[sCounter++] = saturateShade(baseShade[0]);
+      shades.push({
+        ds: deSaturateShade(baseShade[0]),
+        base: baseShade[0],
+        s: saturateShade(baseShade[0])
+      });
     }
   }
   return shades;
