@@ -31,6 +31,18 @@ const Navbar = ({ classes, level, changeLevel, format, changeFormat }) => {
       {level && (
         <div className={classes.sliderContainer}>
           <span>Level: {level}</span>
+          <span
+            className={classes.sliderBtn}
+            onClick={level > 100 && (() => changeLevel(level - 100))}
+          >
+            -
+          </span>
+          <span
+            className={classes.sliderBtn}
+            onClick={level < 900 && (() => changeLevel(level + 100))}
+          >
+            +
+          </span>
           <div className={classes.slider}>
             <Slider
               defaultValue={level}

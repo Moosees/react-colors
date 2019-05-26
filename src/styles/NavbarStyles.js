@@ -1,9 +1,14 @@
+import sizes from '../styles/mediaQueries';
+
 export default {
   root: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    height: '6vh'
+    height: '6vh',
+    [sizes.down('small')]: {
+      height: '4vh'
+    }
   },
   logo: {
     color: '#000',
@@ -14,16 +19,39 @@ export default {
     padding: '0 1rem',
     fontSize: '1.4rem',
     textDecoration: 'none',
-    backgroundColor: '#ebebeb'
+    backgroundColor: '#ebebeb',
+    [sizes.down('small')]: {
+      fontSize: '1.2rem',
+      padding: '0 0.5rem'
+    }
   },
   sliderContainer: {
     display: 'flex',
-    '& span': { fontSize: '1.2rem' }
+    '& span': {
+      fontSize: '1.2rem',
+      [sizes.down('small')]: {
+        margin: '0 0.5rem',
+        fontSize: '1.2rem'
+      }
+    }
+  },
+  sliderBtn: {
+    cursor: 'pointer',
+    display: 'none',
+    [sizes.down('medium')]: {
+      display: 'inline-block'
+    }
   },
   slider: {
     display: 'inline-block',
     width: '34rem',
     margin: '0 1.5rem',
+    [sizes.down('large')]: {
+      width: '20rem'
+    },
+    [sizes.down('medium')]: {
+      display: 'none'
+    },
     '& .rc-slider-track': {
       backgroundColor: 'transparent'
     },
@@ -48,6 +76,15 @@ export default {
   },
   formatSelect: {
     marginLeft: 'auto',
-    marginRight: '1rem'
+    marginRight: '1rem',
+    [sizes.down('small')]: {
+      marginRight: '0',
+      '& div': {
+        fontSize: '1.2rem'
+      }
+    },
+    [sizes.down('smallest')]: {
+      display: 'none'
+    }
   }
 };
