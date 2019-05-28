@@ -9,7 +9,7 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
-import theme from '../styles/muiRemFix';
+import muiRemFix from '../styles/muiRemFix';
 
 const NewPaletteFormDialogs = ({
   history,
@@ -50,11 +50,11 @@ const NewPaletteFormDialogs = ({
   };
 
   return (
-    <div>
+    <React.Fragment>
       <Button variant="contained" color="primary" onClick={handleStage}>
-        Save Palette
+        Save
       </Button>
-      <MuiThemeProvider theme={theme}>
+      <MuiThemeProvider theme={muiRemFix}>
         <Dialog
           open={stage === 1}
           onClose={handleClose}
@@ -118,7 +118,7 @@ const NewPaletteFormDialogs = ({
           </DialogContent>
         </Dialog>
       </MuiThemeProvider>
-    </div>
+    </React.Fragment>
   );
 };
 

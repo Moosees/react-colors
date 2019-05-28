@@ -50,8 +50,8 @@ export default {
   },
   btnMore: {
     cursor: 'zoom-in',
-    right: 0,
-    top: 0,
+    right: '0',
+    top: '0',
     height: '3rem',
     width: '6rem',
     [sizes.down('medium')]: {

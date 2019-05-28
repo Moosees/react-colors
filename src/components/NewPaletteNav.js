@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import styles from '../styles/NewPaletteNavStyles';
@@ -39,7 +38,7 @@ const NewPaletteNav = ({
           <MenuIcon />
         </IconButton>
         <div className={classes.navbar}>
-          <Typography variant="h4">Create your own palette!</Typography>
+          <h4 className={classes.heading}>Create a Palette!</h4>
           <div className={classes.buttons}>
             <NewPaletteFormDialogs
               paletteNames={paletteNames}
@@ -52,11 +51,11 @@ const NewPaletteNav = ({
               color="secondary"
               onClick={clearPalette}
             >
-              Clear palette
+              Clear
             </Button>
             <Link to="/" style={{ textDecoration: 'none' }}>
               <Button variant="contained" color="primary">
-                Go back
+                Home
               </Button>
             </Link>
           </div>
