@@ -19,9 +19,9 @@ const PaletteList = ({
     <div className={classes.root}>
       <div className={classes.container}>
         <nav className={classes.nav}>
-          <h1>React Color Playground</h1>
-          <div>
-            <span style={{ marginRight: '0.5rem' }} onClick={resetPaletteList}>
+          <h1 className={classes.heading}>React Color Playground</h1>
+          <div className={classes.buttons}>
+            <span style={{ marginRight: '0.6rem' }} onClick={resetPaletteList}>
               Reset List
             </span>
             <Link to="/palette/new">Create Palette</Link>

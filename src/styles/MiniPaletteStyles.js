@@ -1,3 +1,5 @@
+import sizes from './mediaQueries';
+
 export default {
   root: {
     backgroundColor: '#fff',
@@ -13,7 +15,7 @@ export default {
   colors: {
     display: 'flex',
     flexWrap: 'wrap',
-    height: '10rem',
+    height: '12rem',
     width: '100%',
     backgroundColor: '#f9f9f9',
     borderRadius: '5px',
@@ -29,23 +31,26 @@ export default {
     alignItems: 'center',
     color: '#000',
     padding: '0.3rem',
-    fontSize: '1.3rem'
+    fontSize: '1.4rem',
+    [sizes.down('largest')]: {
+      fontSize: '1.2rem'
+    }
   },
   emoji: {
     fontSize: '1.8rem'
   },
   delete: {
     position: 'absolute',
-    top: '0',
-    right: '0',
+    top: '0.5rem',
+    right: '0.5rem',
     opacity: '0',
     zIndex: '10',
     transition: 'opacity 0.3s ease-in-out',
     '& svg': {
-      height: '3.5rem',
+      height: '3rem',
       width: '3.5rem',
-      color: '#ff0a21',
-      backgroundColor: 'rgb(100, 100, 100, 0.6)',
+      fill: '#ff0a21',
+      backgroundColor: 'rgb(0, 0, 0, 0.6)',
       borderRadius: '2px'
     }
   }
