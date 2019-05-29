@@ -10,7 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import styles from '../styles/NavbarStyles';
-import theme from '../styles/muiRemFix';
+import muiRemfix from '../styles/muiRemFix';
 
 const Navbar = ({ classes, level, changeLevel, format, changeFormat }) => {
   const [open, setOpen] = useState(false);
@@ -55,7 +55,7 @@ const Navbar = ({ classes, level, changeLevel, format, changeFormat }) => {
         </div>
       )}
       <div className={classes.formatSelect}>
-        <MuiThemeProvider theme={theme}>
+        <MuiThemeProvider theme={muiRemfix}>
           <Select value={format} onChange={handleFormatChange}>
             <MenuItem value="hex">HEX - #eeeeee</MenuItem>
             <MenuItem value="rgb">RGB - rgb(238, 238, 238)</MenuItem>
@@ -63,7 +63,7 @@ const Navbar = ({ classes, level, changeLevel, format, changeFormat }) => {
           </Select>
         </MuiThemeProvider>
       </div>
-      <MuiThemeProvider theme={theme}>
+      <MuiThemeProvider theme={muiRemfix}>
         <Snackbar
           anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
           open={open}

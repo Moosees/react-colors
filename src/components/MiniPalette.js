@@ -9,12 +9,12 @@ const MiniPalette = ({
   emoji,
   colors,
   id,
-  deletePalette,
+  handleDeleteOpen,
   handleClick
 }) => {
   const handleDelete = e => {
     e.stopPropagation();
-    deletePalette(id);
+    handleDeleteOpen({ paletteName, id });
   };
 
   return (
