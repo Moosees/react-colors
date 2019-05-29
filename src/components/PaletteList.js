@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import MiniPalette from './MiniPalette';
 import styles from '../styles/PaletteListStyles';
-import '../styles/fade.css';
 
 const PaletteList = ({
   history,

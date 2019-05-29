@@ -6,6 +6,7 @@ import PaletteList from './PaletteList';
 import SingleColorPalette from './SingleColorPalette';
 import seedColors from '../helpers/seedColors';
 import { generatePalette } from '../helpers/paletteHelpers';
+import { FADE_TIME } from '../constants';
 
 class App extends Component {
   state = {
@@ -52,7 +53,11 @@ class App extends Component {
   };
 
   resetPaletteList = () => {
-    this.setState({ palettes: seedColors }, this.syncLocalStorage);
+    this.setState({ palettes: [] }, () => {
+      setTimeout(() => {
+        this.setState({ palettes: seedColors }, this.syncLocalStorage);
+      }, FADE_TIME);
+    });
   };
 
   render() {
