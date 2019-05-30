@@ -1,25 +1,8 @@
 /* eslint-disable no-dupe-keys */
 import sizes from '../styles/mediaQueries';
 import background from './Dalmatian-Spots.svg';
-import { FADE_TIME } from '../constants';
 
 export default {
-  '@global': {
-    '.fade-enter': {
-      opacity: 0
-    },
-    '.fade-enter-active': {
-      opacity: 1,
-      transition: `opacity ${FADE_TIME}ms ease-out`
-    },
-    '.fade-exit': {
-      opacity: 1
-    },
-    '.fade-exit-active': {
-      opacity: 0,
-      transition: `opacity ${FADE_TIME}ms ease-out`
-    }
-  },
   root: {
     display: 'flex',
     alignItems: 'flex-start',

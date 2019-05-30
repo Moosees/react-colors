@@ -5,6 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import MiniPalette from './MiniPalette';
 import PaletteListDialogs from './PaletteListDialogs';
 import styles from '../styles/PaletteListStyles';
+import { FADE_TIME } from '../constants';
 
 const PaletteList = ({
   history,
@@ -65,7 +66,11 @@ const PaletteList = ({
         </nav>
         <TransitionGroup className={classes.palette}>
           {paletteList.map(palette => (
-            <CSSTransition key={palette.id} timeout={250} classNames="fade">
+            <CSSTransition
+              key={palette.id}
+              timeout={FADE_TIME}
+              classNames="fade"
+            >
               <MiniPalette
                 {...palette}
                 handleDeleteOpen={handleDeleteOpen}
