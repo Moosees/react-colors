@@ -44,6 +44,7 @@ const NewPaletteFormDialogs = ({
       colors
     };
     savePalette(newPalette);
+    handleClose();
     history.push('/');
   };
 

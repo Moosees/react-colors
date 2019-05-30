@@ -55,6 +55,7 @@ const NewPaletteColorPicker = ({
         width="100%"
         color={currentColor}
         onChangeComplete={updateCurrentColor}
+        disableAlpha
       />
       <ValidatorForm onSubmit={handleAddNewColor}>
         <TextValidator
