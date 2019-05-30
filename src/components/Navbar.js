@@ -8,9 +8,7 @@ import Select from '@material-ui/core/Select';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import { MuiThemeProvider } from '@material-ui/core/styles';
 import styles from '../styles/NavbarStyles';
-import muiRemfix from '../styles/muiRemFix';
 
 const Navbar = ({ classes, level, changeLevel, format, changeFormat }) => {
   const [open, setOpen] = useState(false);
@@ -55,34 +53,30 @@ const Navbar = ({ classes, level, changeLevel, format, changeFormat }) => {
         </div>
       )}
       <div className={classes.formatSelect}>
-        <MuiThemeProvider theme={muiRemfix}>
-          <Select value={format} onChange={handleFormatChange}>
-            <MenuItem value="hex">HEX - #eeeeee</MenuItem>
-            <MenuItem value="rgb">RGB - rgb(238, 238, 238)</MenuItem>
-            <MenuItem value="rgba">RGBA - rgba(238, 238, 238, 1.0)</MenuItem>
-          </Select>
-        </MuiThemeProvider>
+        <Select value={format} onChange={handleFormatChange}>
+          <MenuItem value="hex">HEX - #eeeeee</MenuItem>
+          <MenuItem value="rgb">RGB - rgb(238, 238, 238)</MenuItem>
+          <MenuItem value="rgba">RGBA - rgba(238, 238, 238, 1.0)</MenuItem>
+        </Select>
       </div>
-      <MuiThemeProvider theme={muiRemfix}>
-        <Snackbar
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-          open={open}
-          autoHideDuration={3000}
-          message={<span id="message-id">Format Changed!</span>}
-          ContentProps={{ 'aria-describedby': 'message-id' }}
-          onClose={closeSnackbar}
-          action={[
-            <IconButton
-              onClick={closeSnackbar}
-              color="inherit"
-              key="close"
-              aria-label="close"
-            >
-              <CloseIcon />
-            </IconButton>
-          ]}
-        />
-      </MuiThemeProvider>
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+        open={open}
+        autoHideDuration={3000}
+        message={<span id="message-id">Format Changed!</span>}
+        ContentProps={{ 'aria-describedby': 'message-id' }}
+        onClose={closeSnackbar}
+        action={[
+          <IconButton
+            onClick={closeSnackbar}
+            color="inherit"
+            key="close"
+            aria-label="close"
+          >
+            <CloseIcon />
+          </IconButton>
+        ]}
+      />
     </nav>
   );
 };

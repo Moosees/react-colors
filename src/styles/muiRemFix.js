@@ -5,6 +5,6 @@ export default createMuiTheme({
     // Tell Material-UI what the font-size on the html element is.
     htmlFontSize: 10,
     useNextVariants: true,
-    fontSize: 12
+    fontSize: 11
   }
 });

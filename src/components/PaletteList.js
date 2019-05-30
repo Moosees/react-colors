@@ -16,9 +16,7 @@ import Warning from '@material-ui/icons/Warning';
 import Undo from '@material-ui/icons/Undo';
 import Delete from '@material-ui/icons/Delete';
 import MiniPalette from './MiniPalette';
-import { MuiThemeProvider } from '@material-ui/core/styles';
 import styles from '../styles/PaletteListStyles';
-import muiRemfix from '../styles/muiRemFix';
 
 const PaletteList = ({
   history,
@@ -89,67 +87,65 @@ const PaletteList = ({
           ))}
         </TransitionGroup>
       </div>
-      <MuiThemeProvider theme={muiRemfix}>
-        <Dialog
-          open={resetOpen}
-          onClose={handleResetClose}
-          aria-labelledby="reset-dialog-title"
-        >
-          <DialogTitle id="reset-dialog-title">Reset all palettes?</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Do you really want to reset all palettes? <br />
-              This action cannot be undone.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              onClick={handleResetClose}
-              className={classes.dialogBtn}
-              color="primary"
-              variant="contained"
-            >
-              Cancel
-              <Undo />
-            </Button>
-            <Button
-              onClick={handleResetPalettes}
-              className={classes.dialogBtn}
-              color="secondary"
-              variant="contained"
-            >
-              Reset
-              <Warning />
-            </Button>
-          </DialogActions>
-        </Dialog>
-        <Dialog
-          open={deleteOpen}
-          onClose={handleDeleteClose}
-          aria-labelledby="delete-dialog-title"
-        >
-          <DialogTitle
-            id="delete-dialog-title"
-            style={{ padding: '1rem 1.5rem 0' }}
+      <Dialog
+        open={resetOpen}
+        onClose={handleResetClose}
+        aria-labelledby="reset-dialog-title"
+      >
+        <DialogTitle id="reset-dialog-title">Reset all palettes?</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Do you really want to reset all palettes? <br />
+            This action cannot be undone.
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button
+            onClick={handleResetClose}
+            className={classes.dialogBtn}
+            color="primary"
+            variant="contained"
           >
-            Delete {currentPalette.paletteName}?
-          </DialogTitle>
-          <List>
-            <ListItem button onClick={handleDeleteClose}>
-              <ListItemAvatar style={{ color: '#333333' }}>
-                <Undo />
-              </ListItemAvatar>
-              <ListItemText primary="Cancel" />
-            </ListItem>
-            <ListItem button onClick={handleDelete}>
-              <ListItemAvatar style={{ color: '#cc4444' }}>
-                <Delete />
-              </ListItemAvatar>
-              <ListItemText primary="Delete" />
-            </ListItem>
-          </List>
-        </Dialog>
-      </MuiThemeProvider>
+            Cancel
+            <Undo />
+          </Button>
+          <Button
+            onClick={handleResetPalettes}
+            className={classes.dialogBtn}
+            color="secondary"
+            variant="contained"
+          >
+            Reset
+            <Warning />
+          </Button>
+        </DialogActions>
+      </Dialog>
+      <Dialog
+        open={deleteOpen}
+        onClose={handleDeleteClose}
+        aria-labelledby="delete-dialog-title"
+      >
+        <DialogTitle
+          id="delete-dialog-title"
+          style={{ padding: '1rem 1.5rem 0' }}
+        >
+          Delete {currentPalette.paletteName}?
+        </DialogTitle>
+        <List>
+          <ListItem button onClick={handleDeleteClose}>
+            <ListItemAvatar style={{ color: '#333333' }}>
+              <Undo />
+            </ListItemAvatar>
+            <ListItemText primary="Cancel" />
+          </ListItem>
+          <ListItem button onClick={handleDelete}>
+            <ListItemAvatar style={{ color: '#cc4444' }}>
+              <Delete />
+            </ListItemAvatar>
+            <ListItemText primary="Delete" />
+          </ListItem>
+        </List>
+      </Dialog>
     </div>
   );
 };

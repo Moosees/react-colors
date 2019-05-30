@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { ChromePicker } from 'react-color';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import chroma from 'chroma-js';
 import styles from '../styles/NewPaletteColorPickerStyles';
-import theme from '../styles/muiRemFix';
 
 const NewPaletteColorPicker = ({
   classes,
@@ -44,36 +43,34 @@ const NewPaletteColorPicker = ({
 
   return (
     <div className={classes.root}>
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.randomColorBtn}
-          onClick={() => setCurrentColor(chroma.random().hex())}
-        >
-          Random Color
-        </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        className={classes.randomColorBtn}
+        onClick={() => setCurrentColor(chroma.random().hex())}
+      >
+        Random Color
+      </Button>
       <ChromePicker
         width="100%"
         color={currentColor}
         onChangeComplete={updateCurrentColor}
       />
       <ValidatorForm onSubmit={handleAddNewColor}>
-        <MuiThemeProvider theme={theme}>
-          <TextValidator
-            value={newColorName}
-            label="Color Name"
-            variant="outlined"
-            margin="none"
-            className={classes.colorNameInput}
-            onChange={e => setNewColorName(e.target.value)}
-            validators={['required', 'isColorUnique', 'isColorNameUnique']}
-            errorMessages={[
-              'Please name your color',
-              'Color is already added',
-              'Name is already in use'
-            ]}
-          />
-        </MuiThemeProvider>
+        <TextValidator
+          value={newColorName}
+          label="Color Name"
+          variant="outlined"
+          margin="none"
+          className={classes.colorNameInput}
+          onChange={e => setNewColorName(e.target.value)}
+          validators={['required', 'isColorUnique', 'isColorNameUnique']}
+          errorMessages={[
+            'Please name your color',
+            'Color is already added',
+            'Name is already in use'
+          ]}
+        />
         <Button
           variant="contained"
           className={classes.addColorBtn}

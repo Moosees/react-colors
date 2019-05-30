@@ -5,11 +5,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { MuiThemeProvider } from '@material-ui/core/styles';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { Picker } from 'emoji-mart';
 import 'emoji-mart/css/emoji-mart.css';
-import muiRemFix from '../styles/muiRemFix';
 
 const NewPaletteFormDialogs = ({
   history,
@@ -54,70 +52,68 @@ const NewPaletteFormDialogs = ({
       <Button variant="contained" color="primary" onClick={handleStage}>
         Save
       </Button>
-      <MuiThemeProvider theme={muiRemFix}>
-        <Dialog
-          open={stage === 1}
-          onClose={handleClose}
-          aria-labelledby="form-dialog-title"
+      <Dialog
+        open={stage === 1}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle
+          style={{ textTransform: 'uppercase' }}
+          id="form-dialog-title"
         >
-          <DialogTitle
-            style={{ textTransform: 'uppercase' }}
-            id="form-dialog-title"
-          >
-            Save palette
-          </DialogTitle>
-          <DialogContent>
-            <ValidatorForm onSubmit={handleStage}>
-              <DialogContentText
-                style={{ marginBottom: '2rem', marginRight: '2rem' }}
-              >
-                Please enter a unique name for your palette!
-              </DialogContentText>
-              <TextValidator
-                autoFocus
-                label="Palette Name"
-                fullWidth
-                value={newPaletteName}
-                onChange={e => setNewPaletteName(e.target.value)}
-                validators={['required', 'isPaletteNameUnique']}
-                errorMessages={[
-                  'Please name your palette',
-                  'Name is already in use'
-                ]}
-              />
-              <DialogActions>
-                <Button onClick={handleClose} color="primary">
-                  Cancel
-                </Button>
-                <Button type="submit" variant="contained" color="primary">
-                  Confirm
-                </Button>
-              </DialogActions>
-            </ValidatorForm>
-          </DialogContent>
-        </Dialog>
-        <Dialog
-          open={stage === 2}
-          onClose={handleClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogContent>
-            <Picker
-              onSelect={emoji => setNewPaletteEmoji(emoji.native)}
-              title="Pick an emoji!"
-              native={true}
+          Save palette
+        </DialogTitle>
+        <DialogContent>
+          <ValidatorForm onSubmit={handleStage}>
+            <DialogContentText
+              style={{ marginBottom: '2rem', marginRight: '2rem' }}
+            >
+              Please enter a unique name for your palette!
+            </DialogContentText>
+            <TextValidator
+              autoFocus
+              label="Palette Name"
+              fullWidth
+              value={newPaletteName}
+              onChange={e => setNewPaletteName(e.target.value)}
+              validators={['required', 'isPaletteNameUnique']}
+              errorMessages={[
+                'Please name your palette',
+                'Name is already in use'
+              ]}
             />
             <DialogActions>
               <Button onClick={handleClose} color="primary">
                 Cancel
               </Button>
-              <Button onClick={handleSave} variant="contained" color="primary">
-                Save
+              <Button type="submit" variant="contained" color="primary">
+                Confirm
               </Button>
             </DialogActions>
-          </DialogContent>
-        </Dialog>
-      </MuiThemeProvider>
+          </ValidatorForm>
+        </DialogContent>
+      </Dialog>
+      <Dialog
+        open={stage === 2}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogContent>
+          <Picker
+            onSelect={emoji => setNewPaletteEmoji(emoji.native)}
+            title="Pick an emoji!"
+            native={true}
+          />
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={handleSave} variant="contained" color="primary">
+              Save
+            </Button>
+          </DialogActions>
+        </DialogContent>
+      </Dialog>
     </React.Fragment>
   );
 };
