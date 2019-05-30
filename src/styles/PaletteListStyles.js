@@ -103,11 +103,5 @@ export default {
     [sizes.down('smallest')]: {
       gridTemplateColumns: '100%'
     }
-  },
-  dialogBtn: {
-    '& svg': {
-      marginLeft: '4px',
-      marginRight: '-8px'
-    }
   }
 };
