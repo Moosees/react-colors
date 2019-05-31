@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
+import { withStyles } from '@material-ui/core/styles';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import arrayMove from 'array-move';
-import DraggableColorList from './DraggableColorList';
-import NewPaletteNav from './NewPaletteNav';
-import NewPaletteColorPicker from './NewPaletteColorPicker';
+import classNames from 'classnames';
 import styles from '../styles/NewPaletteFormStyles';
+import DraggableColorList from './DraggableColorList';
+import NewPaletteColorPicker from './NewPaletteColorPicker';
+import NewPaletteNav from './NewPaletteNav';
 
 const NewPaletteForm = ({
   classes,

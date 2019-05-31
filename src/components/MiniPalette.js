@@ -12,7 +12,7 @@ const MiniPalette = ({
   deletePalette,
   goToPalette
 }) => {
-  const memoizedColors = useMemo(
+  const colorBoxes = useMemo(
     () =>
       colors.map(color => (
         <span
@@ -40,7 +40,7 @@ const MiniPalette = ({
           onClick={handleDelete}
         />
       </div>
-      <div className={classes.colors}>{memoizedColors}</div>
+      <div className={classes.colors}>{colorBoxes}</div>
       <h5 className={classes.title}>
         {paletteName}
         <span className={classes.emoji}>{emoji}</span>

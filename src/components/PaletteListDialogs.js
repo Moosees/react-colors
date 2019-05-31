@@ -40,10 +40,10 @@ const PaletteListDialogs = ({
         onClose={handleResetClose}
         aria-labelledby="reset-dialog-title"
       >
-        <DialogTitle id="reset-dialog-title">Reset all palettes?</DialogTitle>
+        <DialogTitle id="reset-dialog-title">Reset all palettes</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Do you really want to reset all palettes? <br />
+            Are you sure you want to reset all palettes? <br />
             This action cannot be undone.
           </DialogContentText>
         </DialogContent>

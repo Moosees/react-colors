@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
-import { ChromePicker } from 'react-color';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { withStyles } from '@material-ui/core/styles';
 import chroma from 'chroma-js';
+import { ChromePicker } from 'react-color';
+import { TextValidator, ValidatorForm } from 'react-material-ui-form-validator';
 import styles from '../styles/NewPaletteColorPickerStyles';
 
 const NewPaletteColorPicker = ({
@@ -16,13 +16,13 @@ const NewPaletteColorPicker = ({
   const [newColorName, setNewColorName] = useState('');
 
   useEffect(() => {
-    ValidatorForm.addValidationRule('isColorNameUnique', value =>
+    ValidatorForm.addValidationRule('uniqueColorName', value =>
       colors.every(({ name }) => name.toLowerCase() !== value.toLowerCase())
     );
   }, [colors]);
 
   useEffect(() => {
-    ValidatorForm.addValidationRule('isColorUnique', () =>
+    ValidatorForm.addValidationRule('uniqueColorValue', () =>
       colors.every(({ color }) => color !== currentColor)
     );
   }, [colors, currentColor]);
@@ -37,8 +37,16 @@ const NewPaletteColorPicker = ({
     setNewColorName('');
   };
 
+  const handleInput = e => {
+    setNewColorName(e.target.value);
+  };
+
   const updateCurrentColor = newColor => {
     setCurrentColor(newColor.hex);
+  };
+
+  const randomColor = () => {
+    setCurrentColor(chroma.random().hex());
   };
 
   return (
@@ -47,7 +55,7 @@ const NewPaletteColorPicker = ({
         variant="contained"
         color="primary"
         className={classes.randomColorBtn}
-        onClick={() => setCurrentColor(chroma.random().hex())}
+        onClick={randomColor}
       >
         Random Color
       </Button>
@@ -57,15 +65,15 @@ const NewPaletteColorPicker = ({
         onChangeComplete={updateCurrentColor}
         disableAlpha
       />
-      <ValidatorForm onSubmit={handleAddNewColor}>
+      <ValidatorForm onSubmit={handleAddNewColor} instantValidate={false}>
         <TextValidator
           value={newColorName}
           label="Color Name"
           variant="outlined"
           margin="none"
           className={classes.colorNameInput}
-          onChange={e => setNewColorName(e.target.value)}
-          validators={['required', 'isColorUnique', 'isColorNameUnique']}
+          onChange={handleInput}
+          validators={['required', 'uniqueColorValue', 'uniqueColorName']}
           errorMessages={[
             'Please name your color',
             'Color is already added',
