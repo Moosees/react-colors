@@ -131,6 +131,18 @@ const App = () => {
                   </Page>
                 )}
               />
+              <Route
+                render={routeProps => (
+                  <Page>
+                    <PaletteList
+                      paletteList={palettes}
+                      deletePalette={deletePalette}
+                      resetPaletteList={resetPaletteList}
+                      {...routeProps}
+                    />
+                  </Page>
+                )}
+              />
             </Switch>
           </CSSTransition>
         </TransitionGroup>

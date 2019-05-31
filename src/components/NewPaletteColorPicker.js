@@ -33,7 +33,6 @@ const NewPaletteColorPicker = ({
       color: currentColor
     };
     addNewColor(newColor);
-    setCurrentColor(chroma.random().hex());
     setNewColorName('');
   };
 
