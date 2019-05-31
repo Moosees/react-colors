@@ -87,7 +87,6 @@ const NewPaletteForm = ({
         <DraggableColorList
           axis="xy"
           pressDelay={100}
-          // distance={2}
           helperClass="dragged"
           colors={colors}
           deleteColor={deleteColor}

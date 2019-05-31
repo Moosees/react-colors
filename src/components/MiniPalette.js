@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 import styles from '../styles/MiniPaletteStyles';
@@ -9,12 +9,27 @@ const MiniPalette = ({
   emoji,
   colors,
   id,
-  handleDeleteOpen,
-  handleClick
+  deletePalette,
+  goToPalette
 }) => {
+  const memoizedColors = useMemo(
+    () =>
+      colors.map(color => (
+        <span
+          key={`${color.name}${color.color}`}
+          style={{ backgroundColor: color.color }}
+        />
+      )),
+    [colors]
+  );
+
   const handleDelete = e => {
     e.stopPropagation();
-    handleDeleteOpen({ paletteName, id });
+    deletePalette({ paletteName, id });
+  };
+
+  const handleClick = () => {
+    goToPalette(id);
   };
 
   return (
@@ -25,14 +40,7 @@ const MiniPalette = ({
           onClick={handleDelete}
         />
       </div>
-      <div className={classes.colors}>
-        {colors.map(color => (
-          <span
-            key={`${color.name}${color.color}`}
-            style={{ backgroundColor: color.color }}
-          />
-        ))}
-      </div>
+      <div className={classes.colors}>{memoizedColors}</div>
       <h5 className={classes.title}>
         {paletteName}
         <span className={classes.emoji}>{emoji}</span>

@@ -40,8 +40,6 @@ const SingleColorPalette = ({
     </div>
   ));
 
-  console.log(shades);
-
   return (
     <div className={classes.root}>
       <Navbar format={format} changeFormat={changeFormat} />

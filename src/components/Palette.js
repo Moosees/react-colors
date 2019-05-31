@@ -18,7 +18,7 @@ class Palette extends Component {
     const colorBoxes = colors[level].map(color => (
       <ColorBox
         bgColor={color[format]}
-        name={color.name}
+        name={color.shortName}
         key={color.id}
         moreUrl={`/palette/${id}/${color.shortId}`}
       />

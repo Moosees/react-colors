@@ -48,6 +48,14 @@ const NewPaletteFormDialogs = ({
     history.push('/');
   };
 
+  const handleChangeName = e => {
+    setNewPaletteName(e.target.value);
+  };
+
+  const handleEmojiChange = emoji => {
+    setNewPaletteEmoji(emoji.native);
+  };
+
   return (
     <React.Fragment>
       <Button variant="contained" color="primary" onClick={handleStage}>
@@ -76,7 +84,7 @@ const NewPaletteFormDialogs = ({
               label="Palette Name"
               fullWidth
               value={newPaletteName}
-              onChange={e => setNewPaletteName(e.target.value)}
+              onChange={handleChangeName}
               validators={['required', 'isPaletteNameUnique']}
               errorMessages={[
                 'Please name your palette',
@@ -101,7 +109,7 @@ const NewPaletteFormDialogs = ({
       >
         <DialogContent>
           <Picker
-            onSelect={emoji => setNewPaletteEmoji(emoji.native)}
+            onSelect={handleEmojiChange}
             title="Pick an emoji!"
             native={true}
           />

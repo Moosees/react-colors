@@ -21,8 +21,8 @@ const PaletteList = ({
     id: ''
   });
 
-  const handleDeleteOpen = ({ id, paletteName }) => {
-    setCurrentPalette({ paletteName, id });
+  const handleDeleteOpen = palette => {
+    setCurrentPalette(palette);
     setDeleteOpen(true);
   };
 
@@ -47,9 +47,9 @@ const PaletteList = ({
     history.push(`/palette/${id}`);
   };
 
-  const handleDelete = id => {
+  const handleDelete = () => {
     deletePalette(currentPalette.id);
-    setDeleteOpen(false);
+    handleDeleteClose();
   };
 
   return (
@@ -73,8 +73,8 @@ const PaletteList = ({
             >
               <MiniPalette
                 {...palette}
-                handleDeleteOpen={handleDeleteOpen}
-                handleClick={() => goToPalette(palette.id)}
+                deletePalette={handleDeleteOpen}
+                goToPalette={goToPalette}
               />
             </CSSTransition>
           ))}
