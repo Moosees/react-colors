@@ -83,7 +83,8 @@ class App extends Component {
   };
 
   render() {
-    const paletteNames = this.state.palettes.map(item => item.paletteName);
+    const { palettes, format } = this.state;
+    const paletteNames = palettes.map(item => item.paletteName);
 
     return (
       <Route
@@ -115,7 +116,7 @@ class App extends Component {
                   render={routeProps => (
                     <Page>
                       <PaletteList
-                        paletteList={this.state.palettes}
+                        paletteList={palettes}
                         deletePalette={this.deletePalette}
                         resetPaletteList={this.resetPaletteList}
                         {...routeProps}
@@ -132,7 +133,7 @@ class App extends Component {
                         palette={generatePalette(
                           this.findPalette(routeProps.match.params.id)
                         )}
-                        format={this.state.format}
+                        format={format}
                         changeFormat={this.changeFormat}
                       />
                     </Page>
@@ -149,7 +150,7 @@ class App extends Component {
                         )}
                         paletteId={routeProps.match.params.paletteId}
                         colorId={routeProps.match.params.colorId}
-                        format={this.state.format}
+                        format={format}
                         changeFormat={this.changeFormat}
                       />
                     </Page>
