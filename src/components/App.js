@@ -106,7 +106,7 @@ const App = () => {
                   <Page>
                     <Palette
                       palette={generatePalette(
-                        findPalette(routeProps.match.params.id)
+                        findPalette(routeProps.match.params.id) || seedColors[0]
                       )}
                       format={format}
                       changeFormat={changeFormat}
