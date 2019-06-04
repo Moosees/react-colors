@@ -1,6 +1,6 @@
 /* eslint-disable no-dupe-keys */
 import sizes from '../styles/mediaQueries';
-import background from './Dalmatian-Spots.svg';
+import background from './Colorful-Stingrays.svg';
 
 export default {
   root: {
@@ -25,24 +25,31 @@ export default {
     },
     [sizes.down('medium')]: {
       width: '85%'
+    },
+    [sizes.down('smallest')]: {
+      width: '95%'
     }
   },
   nav: {
     display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'flex-end',
+    alignItems: 'center',
     justifyContent: 'space-between',
+    overflow: 'hidden',
     width: '100%',
-    padding: '0.5rem',
+    height: '3.5rem',
     margin: '1rem 0',
     borderRadius: '2px',
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    backgroundColor: 'rgba(0, 0, 0, 0.45)',
     [sizes.down('largest')]: {
       margin: '0.5rem 0'
+    },
+    [sizes.down('smallest')]: {
+      height: '4.5rem'
     }
   },
   heading: {
     fontSize: '2rem',
+    padding: '0.5rem',
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ff3932+0,f2fc2f+25,30ff6a+50,28acff+75,ff00ff+100 */
     background: 'rgb(255,57,50)',
     background:
@@ -60,15 +67,23 @@ export default {
     }
   },
   buttons: {
+    display: 'flex',
     height: '100%',
-    '& a, & span': {
+    '& button': {
       cursor: 'pointer',
-      color: '#fff',
-      textDecoration: 'underline',
+      color: '#eee',
+      border: 'none',
+      padding: '0 3px',
+      marginLeft: '2px',
       fontSize: '1.4rem',
-      transition: 'color 0.2s ease-in-out',
+      backgroundColor: 'transparent',
+      transition: 'background-color 0.2s ease-in-out',
+      '& a': {
+        color: 'inherit',
+        textDecoration: 'none'
+      },
       '&:hover': {
-        color: '#bbb'
+        backgroundColor: 'rgba(0, 0, 0, 0.55)'
       },
       [sizes.down('small')]: {
         fontSize: '1.2rem'

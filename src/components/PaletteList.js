@@ -47,10 +47,10 @@ const PaletteList = ({
         <nav className={classes.nav}>
           <h1 className={classes.heading}>React Color Playground</h1>
           <div className={classes.buttons}>
-            <span style={{ marginRight: '0.6rem' }} onClick={toggleResetOpen}>
-              Reset List
-            </span>
-            <Link to="/palette/new">Create Palette</Link>
+            <button onClick={toggleResetOpen}>Reset List</button>
+            <button>
+              <Link to="/palette/new">Create Palette</Link>
+            </button>
           </div>
         </nav>
         <TransitionGroup className={classes.palette}>
