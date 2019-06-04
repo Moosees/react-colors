@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { FADE_TIME } from '../constants';
+import useToggle from '../hooks/useToggle';
+import styles from '../styles/PaletteListStyles';
 import MiniPalette from './MiniPalette';
 import PaletteListDialogs from './PaletteListDialogs';
-import styles from '../styles/PaletteListStyles';
-import { FADE_TIME } from '../constants';
 
 const PaletteList = ({
   history,
@@ -14,8 +15,8 @@ const PaletteList = ({
   deletePalette,
   resetPaletteList
 }) => {
-  const [deleteOpen, setDeleteOpen] = useState(false);
-  const [resetOpen, setResetOpen] = useState(false);
+  const [deleteOpen, toggleDeleteOpen] = useToggle(false);
+  const [resetOpen, toggleResetOpen] = useToggle(false);
   const [currentPalette, setCurrentPalette] = useState({
     paletteName: '',
     id: ''
@@ -23,23 +24,11 @@ const PaletteList = ({
 
   const handleDeleteOpen = palette => {
     setCurrentPalette(palette);
-    setDeleteOpen(true);
-  };
-
-  const handleDeleteClose = () => {
-    setDeleteOpen(false);
-  };
-
-  const handleResetOpen = () => {
-    setResetOpen(true);
-  };
-
-  const handleResetClose = () => {
-    setResetOpen(false);
+    toggleDeleteOpen();
   };
 
   const handleResetPalettes = () => {
-    setResetOpen(false);
+    toggleResetOpen();
     resetPaletteList();
   };
 
@@ -48,8 +37,8 @@ const PaletteList = ({
   };
 
   const handleDelete = () => {
+    toggleDeleteOpen();
     deletePalette(currentPalette.id);
-    handleDeleteClose();
   };
 
   return (
@@ -58,7 +47,7 @@ const PaletteList = ({
         <nav className={classes.nav}>
           <h1 className={classes.heading}>React Color Playground</h1>
           <div className={classes.buttons}>
-            <span style={{ marginRight: '0.6rem' }} onClick={handleResetOpen}>
+            <span style={{ marginRight: '0.6rem' }} onClick={toggleResetOpen}>
               Reset List
             </span>
             <Link to="/palette/new">Create Palette</Link>
@@ -84,8 +73,8 @@ const PaletteList = ({
         currentPaletteName={currentPalette.paletteName}
         deleteOpen={deleteOpen}
         resetOpen={resetOpen}
-        handleDeleteClose={handleDeleteClose}
-        handleResetClose={handleResetClose}
+        handleDeleteClose={toggleDeleteOpen}
+        handleResetClose={toggleResetOpen}
         handleDelete={handleDelete}
         handleResetPalettes={handleResetPalettes}
       />

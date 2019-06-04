@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import arrayMove from 'array-move';
 import classNames from 'classnames';
+import useToggle from '../hooks/useToggle';
 import styles from '../styles/NewPaletteFormStyles';
 import DraggableColorList from './DraggableColorList';
 import NewPaletteColorPicker from './NewPaletteColorPicker';
@@ -18,16 +19,8 @@ const NewPaletteForm = ({
   starterPalette,
   maxPaletteSize = 20
 }) => {
-  const [open, setOpen] = useState(true);
+  const [drawerOpen, toggleDrawerOpen] = useToggle(true);
   const [colors, setColors] = useState(starterPalette);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   const clearPalette = () => {
     setColors([]);
@@ -50,9 +43,9 @@ const NewPaletteForm = ({
       <NewPaletteNav
         colors={colors}
         clearPalette={clearPalette}
-        handleDrawerOpen={handleDrawerOpen}
+        handleDrawerOpen={toggleDrawerOpen}
         savePalette={savePalette}
-        open={open}
+        open={drawerOpen}
         paletteNames={paletteNames}
         history={history}
       />
@@ -60,13 +53,13 @@ const NewPaletteForm = ({
         className={classes.drawer}
         variant="persistent"
         anchor="left"
-        open={open}
+        open={drawerOpen}
         classes={{
           paper: classes.drawerPaper
         }}
       >
         <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={toggleDrawerOpen}>
             <ChevronLeftIcon />
           </IconButton>
         </div>
@@ -80,7 +73,7 @@ const NewPaletteForm = ({
       </Drawer>
       <main
         className={classNames(classes.content, {
-          [classes.contentShift]: open
+          [classes.contentShift]: drawerOpen
         })}
       >
         <div className={classes.drawerHeader} />

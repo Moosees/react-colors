@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
@@ -7,6 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+import useToggle from '../hooks/useToggle';
 import styles from '../styles/NewPaletteNavStyles';
 import NewPaletteFormDialogs from './NewPaletteFormDialogs';
 
@@ -20,15 +21,7 @@ const NewPaletteNav = ({
   colors,
   clearPalette
 }) => {
-  const [clearOpen, setClearOpen] = useState(false);
-
-  const handleClearOpen = () => {
-    setClearOpen(true);
-  };
-
-  const handleClearClose = () => {
-    setClearOpen(false);
-  };
+  const [clearOpen, toggleClearOpen] = useToggle(false);
 
   return (
     <AppBar
@@ -54,7 +47,7 @@ const NewPaletteNav = ({
               paletteNames={paletteNames}
               savePalette={savePalette}
               clearOpen={clearOpen}
-              handleClearClose={handleClearClose}
+              handleClearClose={toggleClearOpen}
               clearPalette={clearPalette}
               colors={colors}
               history={history}
@@ -62,7 +55,7 @@ const NewPaletteNav = ({
             <Button
               variant="contained"
               color="secondary"
-              onClick={handleClearOpen}
+              onClick={toggleClearOpen}
             >
               Clear
             </Button>

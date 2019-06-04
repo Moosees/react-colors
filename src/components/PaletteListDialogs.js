@@ -32,70 +32,68 @@ const PaletteListDialogs = ({
   handleDelete,
   handleResetPalettes,
   classes
-}) => {
-  return (
-    <React.Fragment>
-      <Dialog
-        open={resetOpen}
-        onClose={handleResetClose}
-        aria-labelledby="reset-dialog-title"
-      >
-        <DialogTitle id="reset-dialog-title">Reset all palettes</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Are you sure you want to reset all palettes? <br />
-            This action cannot be undone.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            onClick={handleResetClose}
-            className={classes.dialogBtn}
-            color="primary"
-            variant="contained"
-          >
-            Cancel
-            <Undo />
-          </Button>
-          <Button
-            onClick={handleResetPalettes}
-            className={classes.dialogBtn}
-            color="secondary"
-            variant="contained"
-          >
-            Reset
-            <Warning />
-          </Button>
-        </DialogActions>
-      </Dialog>
-      <Dialog
-        open={deleteOpen}
-        onClose={handleDeleteClose}
-        aria-labelledby="delete-dialog-title"
-      >
-        <DialogTitle
-          id="delete-dialog-title"
-          style={{ padding: '1rem 1.5rem 0' }}
+}) => (
+  <React.Fragment>
+    <Dialog
+      open={resetOpen}
+      onClose={handleResetClose}
+      aria-labelledby="reset-dialog-title"
+    >
+      <DialogTitle id="reset-dialog-title">Reset all palettes</DialogTitle>
+      <DialogContent>
+        <DialogContentText>
+          Are you sure you want to reset all palettes? <br />
+          This action cannot be undone.
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button
+          onClick={handleResetClose}
+          className={classes.dialogBtn}
+          color="primary"
+          variant="contained"
         >
-          Delete {currentPaletteName}?
-        </DialogTitle>
-        <List>
-          <ListItem button onClick={handleDeleteClose}>
-            <ListItemAvatar style={{ color: '#333333' }}>
-              <Undo />
-            </ListItemAvatar>
-            <ListItemText primary="Cancel" />
-          </ListItem>
-          <ListItem button onClick={handleDelete}>
-            <ListItemAvatar style={{ color: '#cc4444' }}>
-              <Delete />
-            </ListItemAvatar>
-            <ListItemText primary="Delete" />
-          </ListItem>
-        </List>
-      </Dialog>
-    </React.Fragment>
-  );
-};
+          Cancel
+          <Undo />
+        </Button>
+        <Button
+          onClick={handleResetPalettes}
+          className={classes.dialogBtn}
+          color="secondary"
+          variant="contained"
+        >
+          Reset
+          <Warning />
+        </Button>
+      </DialogActions>
+    </Dialog>
+    <Dialog
+      open={deleteOpen}
+      onClose={handleDeleteClose}
+      aria-labelledby="delete-dialog-title"
+    >
+      <DialogTitle
+        id="delete-dialog-title"
+        style={{ padding: '1rem 1.5rem 0' }}
+      >
+        Delete {currentPaletteName}?
+      </DialogTitle>
+      <List>
+        <ListItem button onClick={handleDeleteClose}>
+          <ListItemAvatar style={{ color: '#333333' }}>
+            <Undo />
+          </ListItemAvatar>
+          <ListItemText primary="Cancel" />
+        </ListItem>
+        <ListItem button onClick={handleDelete}>
+          <ListItemAvatar style={{ color: '#cc4444' }}>
+            <Delete />
+          </ListItemAvatar>
+          <ListItemText primary="Delete" />
+        </ListItem>
+      </List>
+    </Dialog>
+  </React.Fragment>
+);
 
 export default withStyles(styles)(PaletteListDialogs);

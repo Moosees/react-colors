@@ -8,8 +8,8 @@ import CloseIcon from '@material-ui/icons/Close';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { Link } from 'react-router-dom';
-import styles from '../styles/NavbarStyles';
 import useToggle from '../hooks/useToggle';
+import styles from '../styles/NavbarStyles';
 
 const Navbar = ({ classes, level, changeLevel, format, changeFormat }) => {
   const [snackbarOpen, toggleSnackbarOpen] = useToggle(false);
