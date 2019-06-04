@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
@@ -9,16 +9,14 @@ import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { Link } from 'react-router-dom';
 import styles from '../styles/NavbarStyles';
+import useToggle from '../hooks/useToggle';
 
 const Navbar = ({ classes, level, changeLevel, format, changeFormat }) => {
-  const [open, setOpen] = useState(false);
+  const [snackbarOpen, toggleSnackbarOpen] = useToggle(false);
 
   const handleFormatChange = e => {
-    setOpen(true);
+    toggleSnackbarOpen();
     changeFormat(e.target.value);
-  };
-  const closeSnackbar = () => {
-    setOpen(false);
   };
 
   return (
@@ -61,14 +59,14 @@ const Navbar = ({ classes, level, changeLevel, format, changeFormat }) => {
       </div>
       <Snackbar
         anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-        open={open}
+        open={snackbarOpen}
         autoHideDuration={3000}
         message={<span id="message-id">Format Changed!</span>}
         ContentProps={{ 'aria-describedby': 'message-id' }}
-        onClose={closeSnackbar}
+        onClose={toggleSnackbarOpen}
         action={[
           <IconButton
-            onClick={closeSnackbar}
+            onClick={toggleSnackbarOpen}
             color="inherit"
             key="close"
             aria-label="close"

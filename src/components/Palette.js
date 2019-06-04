@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import styles from '../styles/PaletteStyles';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
-import { withStyles } from '@material-ui/core/styles';
-import styles from '../styles/PaletteStyles';
 
 const Palette = ({ classes, format, changeFormat, palette }) => {
   const { colors, paletteName, emoji, id } = palette;
