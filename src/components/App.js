@@ -1,10 +1,11 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Route, Switch } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { FADE_TIME } from '../constants';
 import { generatePalette } from '../helpers/paletteHelpers';
 import seedColors from '../helpers/seedColors';
+import ErrorBoundary from './ErrorBoundary';
 import NewPaletteForm from './NewPaletteForm';
 import Page from './Page';
 import Palette from './Palette';
@@ -119,15 +120,17 @@ const App = () => {
                 path="/palette/:paletteId/:colorId"
                 render={routeProps => (
                   <Page>
-                    <SingleColorPalette
-                      palette={generatePalette(
-                        findPalette(routeProps.match.params.paletteId)
-                      )}
-                      paletteId={routeProps.match.params.paletteId}
-                      colorId={routeProps.match.params.colorId}
-                      format={format}
-                      changeFormat={changeFormat}
-                    />
+                    <ErrorBoundary>
+                      <SingleColorPalette
+                        palette={generatePalette(
+                          findPalette(routeProps.match.params.paletteId)
+                        )}
+                        paletteId={routeProps.match.params.paletteId}
+                        colorId={routeProps.match.params.colorId}
+                        format={format}
+                        changeFormat={changeFormat}
+                      />
+                    </ErrorBoundary>
                   </Page>
                 )}
               />
