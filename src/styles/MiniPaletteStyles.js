@@ -36,9 +36,6 @@ export default {
       fontSize: '1.2rem'
     }
   },
-  emoji: {
-    fontSize: '1.8rem'
-  },
   delete: {
     position: 'absolute',
     top: '0.5rem',

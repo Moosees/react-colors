@@ -48,9 +48,10 @@ const NewPaletteFormDialogs = ({
     const newPalette = {
       paletteName: newPaletteName,
       id: newPaletteName.toLowerCase().replace(/ /g, '-'),
-      emoji: emoji.native,
+      emoji: emoji.colons,
       colors
     };
+    console.log(emoji);
     savePalette(newPalette);
     handleClose();
     history.push('/');
@@ -128,7 +129,7 @@ const NewPaletteFormDialogs = ({
           Pick an emoji!
         </DialogTitle>
         <DialogContent>
-          <Picker onSelect={handleSave} />
+          <Picker set='google' onSelect={handleSave} />
         </DialogContent>
       </Dialog>
       <Dialog

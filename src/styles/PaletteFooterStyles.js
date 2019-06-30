@@ -13,14 +13,10 @@ export default {
     [sizes.down('small')]: {
       height: '3vh',
       fontSize: '1.2rem',
-      marginTop: '5px'
+      marginTop: '1rem'
     }
   },
-  emoji: {
-    marginLeft: '1rem',
-    fontSize: '2.5rem',
-    [sizes.down('small')]: {
-      fontSize: '1.5rem'
-    }
+  title: {
+    marginRight: '1rem'
   }
 };

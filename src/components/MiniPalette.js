@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
+import { Emoji } from 'emoji-mart';
 import styles from '../styles/MiniPaletteStyles';
 
 const MiniPalette = ({
@@ -43,7 +44,7 @@ const MiniPalette = ({
       <div className={classes.colors}>{colorBoxes}</div>
       <h5 className={classes.title}>
         {paletteName}
-        <span className={classes.emoji}>{emoji}</span>
+        <Emoji emoji={emoji} set="google" size={16} />
       </h5>
     </div>
   );
