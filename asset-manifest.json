@@ -1,26 +1,24 @@
 {
   "files": {
-    "main.css": "/react-colors/static/css/main.2a6519a3.chunk.css",
-    "main.js": "/react-colors/static/js/main.782f1d2b.chunk.js",
-    "main.js.map": "/react-colors/static/js/main.782f1d2b.chunk.js.map",
-    "runtime-main.js": "/react-colors/static/js/runtime-main.c895aa97.js",
-    "runtime-main.js.map": "/react-colors/static/js/runtime-main.c895aa97.js.map",
-    "static/css/2.b72b3507.chunk.css": "/react-colors/static/css/2.b72b3507.chunk.css",
-    "static/js/2.5c1fb9b1.chunk.js": "/react-colors/static/js/2.5c1fb9b1.chunk.js",
-    "static/js/2.5c1fb9b1.chunk.js.map": "/react-colors/static/js/2.5c1fb9b1.chunk.js.map",
+    "main.css": "/react-colors/static/css/main.e065f43c.chunk.css",
+    "main.js": "/react-colors/static/js/main.75f66a90.chunk.js",
+    "main.js.map": "/react-colors/static/js/main.75f66a90.chunk.js.map",
+    "runtime-main.js": "/react-colors/static/js/runtime-main.a74153fa.js",
+    "runtime-main.js.map": "/react-colors/static/js/runtime-main.a74153fa.js.map",
+    "static/css/2.67f38248.chunk.css": "/react-colors/static/css/2.67f38248.chunk.css",
+    "static/js/2.20326dd6.chunk.js": "/react-colors/static/js/2.20326dd6.chunk.js",
+    "static/js/2.20326dd6.chunk.js.map": "/react-colors/static/js/2.20326dd6.chunk.js.map",
     "index.html": "/react-colors/index.html",
-    "precache-manifest.8a3f715c4f4698a5771cd1b03e93181d.js": "/react-colors/precache-manifest.8a3f715c4f4698a5771cd1b03e93181d.js",
-    "service-worker.js": "/react-colors/service-worker.js",
-    "static/css/2.b72b3507.chunk.css.map": "/react-colors/static/css/2.b72b3507.chunk.css.map",
-    "static/css/main.2a6519a3.chunk.css.map": "/react-colors/static/css/main.2a6519a3.chunk.css.map",
-    "static/js/2.5c1fb9b1.chunk.js.LICENSE.txt": "/react-colors/static/js/2.5c1fb9b1.chunk.js.LICENSE.txt",
-    "static/media/Colorful-Stingrays.svg": "/react-colors/static/media/Colorful-Stingrays.4b4ada6f.svg"
+    "static/css/2.67f38248.chunk.css.map": "/react-colors/static/css/2.67f38248.chunk.css.map",
+    "static/css/main.e065f43c.chunk.css.map": "/react-colors/static/css/main.e065f43c.chunk.css.map",
+    "static/js/2.20326dd6.chunk.js.LICENSE.txt": "/react-colors/static/js/2.20326dd6.chunk.js.LICENSE.txt",
+    "static/media/Colorful-Stingrays.b2edf788.svg": "/react-colors/static/media/Colorful-Stingrays.b2edf788.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.c895aa97.js",
-    "static/css/2.b72b3507.chunk.css",
-    "static/js/2.5c1fb9b1.chunk.js",
-    "static/css/main.2a6519a3.chunk.css",
-    "static/js/main.782f1d2b.chunk.js"
+    "static/js/runtime-main.a74153fa.js",
+    "static/css/2.67f38248.chunk.css",
+    "static/js/2.20326dd6.chunk.js",
+    "static/css/main.e065f43c.chunk.css",
+    "static/js/main.75f66a90.chunk.js"
   ]
 }
