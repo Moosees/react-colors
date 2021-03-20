@@ -1,6 +1,6 @@
 import sizes from './mediaQueries';
 
-export default {
+const styles = {
   root: {
     backgroundColor: '#fff',
     borderRadius: '5px',
@@ -9,8 +9,8 @@ export default {
     overflow: 'hidden',
     cursor: 'pointer',
     '&:hover div:first-child': {
-      opacity: '1'
-    }
+      opacity: '1',
+    },
   },
   colors: {
     display: 'flex',
@@ -22,8 +22,8 @@ export default {
     overflow: 'hidden',
     '& span': {
       width: '20%',
-      height: '25%'
-    }
+      height: '25%',
+    },
   },
   title: {
     display: 'flex',
@@ -33,8 +33,8 @@ export default {
     padding: '0.3rem',
     fontSize: '1.4rem',
     [sizes.down('largest')]: {
-      fontSize: '1.2rem'
-    }
+      fontSize: '1.2rem',
+    },
   },
   delete: {
     position: 'absolute',
@@ -48,7 +48,9 @@ export default {
       width: '3.5rem',
       fill: '#ff0a21',
       backgroundColor: 'rgb(0, 0, 0, 0.6)',
-      borderRadius: '2px'
-    }
-  }
+      borderRadius: '2px',
+    },
+  },
 };
+
+export default styles;

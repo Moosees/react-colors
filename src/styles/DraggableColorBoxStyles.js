@@ -1,14 +1,14 @@
 import chroma from 'chroma-js';
 import sizes from './mediaQueries';
 
-export default {
+const styles = {
   root: {
     cursor: 'grab',
     position: 'relative',
     backgroundColor: ({ bgColor }) => bgColor,
     [sizes.down('smallest')]: {
-      height: '5%'
-    }
+      height: '5%',
+    },
   },
   text: {
     display: 'flex',
@@ -23,15 +23,17 @@ export default {
     color: ({ bgColor }) =>
       chroma(bgColor).luminance() <= 0.08 ? '#dadada' : '#333',
     [sizes.down('medium')]: {
-      fontSize: '1rem'
-    }
+      fontSize: '1rem',
+    },
   },
   deleteIcon: {
     cursor: 'pointer',
     transition: 'color 0.2s ease-in-out, transform 0.2s ease-in-out',
     '&:hover': {
       transform: 'scale(1.4)',
-      color: '#777'
-    }
-  }
+      color: '#777',
+    },
+  },
 };
+
+export default styles;

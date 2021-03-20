@@ -1,27 +1,27 @@
 import sizes from '../styles/mediaQueries';
 
-export default {
+const styles = {
   root: {
     display: 'flex',
     flexDirection: 'column',
     height: '100vh',
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   colors: {
     display: 'grid',
     gridTemplateColumns: 'repeat(5, 20%)',
     height: '89vh',
     [sizes.down('largest')]: {
-      gridTemplateColumns: 'repeat(4, 25%)'
+      gridTemplateColumns: 'repeat(4, 25%)',
     },
     [sizes.down('small')]: {
       gridTemplateColumns: 'repeat(2, 50%)',
-      height: '92vh'
+      height: '92vh',
     },
     [sizes.down('tiny')]: {
       display: 'flex',
-      flexDirection: 'column'
-    }
+      flexDirection: 'column',
+    },
   },
   shadesBox: {
     position: 'relative',
@@ -30,22 +30,22 @@ export default {
     marginBottom: '1px',
     [sizes.down('tiny')]: {
       minHeight: '10%',
-      gridTemplateColumns: 'repeat(3, 1fr)'
-    }
+      gridTemplateColumns: 'repeat(3, 1fr)',
+    },
   },
   backBox: {
     backgroundColor: '#000',
     cursor: 'pointer',
     position: 'relative',
     [sizes.down('largest')]: {
-      gridColumn: '2 / span 3'
+      gridColumn: '2 / span 3',
     },
     [sizes.down('small')]: {
-      gridColumn: 'auto'
+      gridColumn: 'auto',
     },
     [sizes.down('tiny')]: {
-      minHeight: '10%'
-    }
+      minHeight: '10%',
+    },
   },
   btnBack: {
     cursor: 'zoom-out',
@@ -61,6 +61,8 @@ export default {
     width: '10rem',
     marginTop: '-1.5rem',
     marginLeft: '-5rem',
-    borderRadius: 2
-  }
+    borderRadius: 2,
+  },
 };
+
+export default styles;

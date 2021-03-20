@@ -1,6 +1,6 @@
 import sizes from '../styles/mediaQueries';
 
-export default {
+const styles = {
   root: {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -13,10 +13,12 @@ export default {
     [sizes.down('small')]: {
       height: '3vh',
       fontSize: '1.2rem',
-      marginTop: '1rem'
-    }
+      marginTop: '1rem',
+    },
   },
   title: {
-    marginRight: '1rem'
-  }
+    marginRight: '1rem',
+  },
 };
+
+export default styles;

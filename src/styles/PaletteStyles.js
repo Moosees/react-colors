@@ -1,10 +1,10 @@
 import sizes from '../styles/mediaQueries';
 
-export default {
+const styles = {
   root: {
     display: 'flex',
     flexDirection: 'column',
-    height: '100vh'
+    height: '100vh',
   },
   colors: {
     display: 'grid',
@@ -13,16 +13,18 @@ export default {
     height: '89vh',
     [sizes.down('largest')]: {
       gridTemplateColumns: 'repeat(4, 25%)',
-      gridTemplateRows: 'repeat(5, 20%)'
+      gridTemplateRows: 'repeat(5, 20%)',
     },
     [sizes.down('small')]: {
       gridTemplateColumns: 'repeat(2, 50%)',
       gridTemplateRows: 'repeat(10, 10%)',
-      height: '92vh'
+      height: '92vh',
     },
     [sizes.down('tiny')]: {
       display: 'flex',
-      flexDirection: 'column'
-    }
-  }
+      flexDirection: 'column',
+    },
+  },
 };
+
+export default styles;

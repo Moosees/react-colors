@@ -1,4 +1,4 @@
-export default {
+const mediaQueries = {
   up() {},
 
   down(size) {
@@ -8,8 +8,10 @@ export default {
       medium: '41.25em',
       small: '31.25em',
       smallest: '25.625em',
-      tiny: '21.875em'
+      tiny: '21.875em',
     };
     return `@media only screen and (max-width: ${sizes[size]})`;
-  }
+  },
 };
+
+export default mediaQueries;

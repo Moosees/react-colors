@@ -2,7 +2,7 @@
 import sizes from '../styles/mediaQueries';
 import background from './Colorful-Stingrays.svg';
 
-export default {
+const styles = {
   root: {
     display: 'flex',
     alignItems: 'flex-start',
@@ -12,7 +12,7 @@ export default {
     paddingBottom: '1rem',
     /* background by SVGBackgrounds.com */
     backgroundColor: '#405cff',
-    backgroundImage: `url('${background}')`
+    backgroundImage: `url('${background}')`,
   },
   container: {
     display: 'grid',
@@ -21,14 +21,14 @@ export default {
     flexWrap: 'wrap',
     width: '50%',
     [sizes.down('largest')]: {
-      width: '75%'
+      width: '75%',
     },
     [sizes.down('medium')]: {
-      width: '85%'
+      width: '85%',
     },
     [sizes.down('smallest')]: {
-      width: '95%'
-    }
+      width: '95%',
+    },
   },
   nav: {
     display: 'flex',
@@ -41,11 +41,11 @@ export default {
     borderRadius: '2px',
     backgroundColor: 'rgba(0, 0, 0, 0.45)',
     [sizes.down('largest')]: {
-      margin: '0.5rem 0'
+      margin: '0.5rem 0',
     },
     [sizes.down('smallest')]: {
-      height: '4.5rem'
-    }
+      height: '4.5rem',
+    },
   },
   heading: {
     fontSize: '2rem',
@@ -63,8 +63,8 @@ export default {
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     [sizes.down('small')]: {
-      fontSize: '1.8rem'
-    }
+      fontSize: '1.8rem',
+    },
   },
   buttons: {
     display: 'flex',
@@ -80,15 +80,15 @@ export default {
       transition: 'background-color 0.2s ease-in-out',
       '& a': {
         color: 'inherit',
-        textDecoration: 'none'
+        textDecoration: 'none',
       },
       '&:hover': {
-        backgroundColor: 'rgba(0, 0, 0, 0.55)'
+        backgroundColor: 'rgba(0, 0, 0, 0.55)',
       },
       [sizes.down('small')]: {
-        fontSize: '1.2rem'
-      }
-    }
+        fontSize: '1.2rem',
+      },
+    },
   },
   palette: {
     display: 'grid',
@@ -96,10 +96,12 @@ export default {
     gridGap: '1.5rem',
     width: '100%',
     [sizes.down('medium')]: {
-      gridTemplateColumns: 'repeat(2, 1fr)'
+      gridTemplateColumns: 'repeat(2, 1fr)',
     },
     [sizes.down('smallest')]: {
-      gridTemplateColumns: '100%'
-    }
-  }
+      gridTemplateColumns: '100%',
+    },
+  },
 };
+
+export default styles;
